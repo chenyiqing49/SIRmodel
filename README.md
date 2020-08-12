@@ -2,17 +2,26 @@
 
 Per compilare il progetto
 
-ATTRAVERSO CMAKE (ninja file)
+1) ATTRAVERSO CMAKE (ninja file)
+
+Come scaricare ninja(Ubuntu):
+
+sudo apt-get install ninja
 
 cd SIRmodel
-mkdir build
+
+cd build
+
 cmake -G Ninja ..
+
 ninja 
 
 ./sir-sfml
 
-DA TERMINALE:
+2) DA TERMINALE:
 
 g++ -c main.cpp
+
 g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+
 ./sfml-app
