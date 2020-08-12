@@ -10,6 +10,7 @@ sudo apt-get install ninja
 Passiamo alla compilazione:
 ```
 cd SIRmodel
+cd option1 (cd option2)
 cd build
 cmake -G Ninja ..
 ninja 
