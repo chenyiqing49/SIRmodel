@@ -4,6 +4,7 @@ Per compilare il progetto
 
 1) ATTRAVERSO CMAKE (ninja file)
 
+\code{
 Come scaricare ninja(Ubuntu):
 
 sudo apt-get install ninja
@@ -17,6 +18,7 @@ cmake -G Ninja ..
 ninja 
 
 ./sir-sfml
+}
 
 2) DA TERMINALE:
 
