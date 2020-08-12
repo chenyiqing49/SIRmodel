@@ -11,6 +11,7 @@ Passiamo alla compilazione:
 ```
 cd SIRmodel
 cd option1 (cd option2)
+mkdir build
 cd build
 cmake -G Ninja ..
 ninja 
