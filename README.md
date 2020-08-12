@@ -5,18 +5,18 @@ Per compilare il progetto
 1) ATTRAVERSO CMAKE (ninja file)
 
 Come scaricare ninja(Ubuntu):
+'''
+sudo apt-get install ninja
 
-'sudo apt-get install ninja'
+cd SIRmodel
 
-'cd SIRmodel'
+cd build
 
-'cd build'
+cmake -G Ninja ..
 
-'cmake -G Ninja ..'
+ninja 
 
-'ninja '
-
-'./sir-sfml'
+./sir-sfml
 
 2) DA TERMINALE:
 
