@@ -2,7 +2,7 @@
 
 Per compilare il progetto
 
-1) ATTRAVERSO CMAKE (ninja file)
+> ATTRAVERSO CMAKE (ninja file)
 
 Come scaricare ninja(Ubuntu):
 ```
@@ -18,8 +18,7 @@ ninja
 
 ./sir-sfml
 ```
-
-2) DA TERMINALE:
+> DA TERMINALE:
 ```
 g++ -c main.cpp
 
