@@ -1,8 +1,7 @@
 # SIRmodel
+Per compilare il progetto abbiamo due possibili strade:
 
-## Per compilare il progetto
-
-> # ATTRAVERSO CMAKE (ninja file)
+> ## ATTRAVERSO CMAKE (ninja file)
 
 Come scaricare ninja(Ubuntu):
 ```
@@ -18,7 +17,7 @@ ninja
 
 ./sir-sfml
 ```
-> # DA TERMINALE:
+> ## DA TERMINALE:
 ```
 g++ -c main.cpp
 
