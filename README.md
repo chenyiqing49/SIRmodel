@@ -17,6 +17,7 @@ cmake -G Ninja ..
 ninja 
 
 ./sir-sfml
+'''
 
 2) DA TERMINALE:
 
