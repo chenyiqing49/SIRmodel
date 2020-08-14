@@ -24,4 +24,4 @@ g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
 ./sfml-app
 ```
 
-![im](sir.png)
+![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1/sir.png)
