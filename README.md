@@ -17,7 +17,8 @@ cmake -G Ninja ..
 ninja 
 ./sir-sfml
 ```
-Per quanto riguarda gli unit test:
+Successivamente alla compilazione del progetto, per quanto riguarda gli unit test:
+
 ![OPZIONE 1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1) 
 ```
 ./run_point_tests
