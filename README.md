@@ -3,8 +3,9 @@ Per compilare il progetto abbiamo due possibili modi: cmake o terminale.
 
 > ### ATTRAVERSO CMAKE (ninja file)
 
-Come installare ninja (Ubuntu):
+Come installare cmake e ninja (Ubuntu):
 ```
+sudo apt-get install cmake
 sudo apt-get install ninja
 ```
 Passiamo alla compilazione:
