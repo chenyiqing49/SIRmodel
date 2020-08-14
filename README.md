@@ -17,6 +17,18 @@ cmake -G Ninja ..
 ninja 
 ./sir-sfml
 ```
+Per quanto riguarda gli unit test:
+![OPZIONE 1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1) 
+```
+./run_point_tests
+./run_sir_tests
+```
+
+![OPZIONE 2](https://github.com/samuelelanzi/SIRmodel/blob/master/option2) 
+```
+./run_board_tests
+```
+
 > ### DA TERMINALE:
 ```
 g++ -c main.cpp
