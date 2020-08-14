@@ -25,3 +25,6 @@ g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
 ```
 
 ![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1/sir.png)
+
+![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/option2/display.png)
+
