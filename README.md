@@ -1,5 +1,5 @@
 # SIRmodel
-Per compilare il progetto abbiamo due possibili strade:
+Per compilare il progetto abbiamo due possibili modi: cmake o terminale.
 
 > ### ATTRAVERSO CMAKE (ninja file)
 
