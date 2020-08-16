@@ -3,10 +3,9 @@ Per compilare il progetto abbiamo due possibili modi: cmake o terminale.
 
 > ### ATTRAVERSO CMAKE (ninja file)
 
-Come installare cmake e ninja (Ubuntu):
+Come installare cmake (Ubuntu):
 ```
 sudo apt-get install cmake
-sudo apt-get install ninja
 ```
 Passiamo alla compilazione:
 ```
@@ -14,21 +13,14 @@ cd SIRmodel
 cd option1 (cd option2)
 mkdir build
 cd build
-cmake -G Ninja ..
-ninja 
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake --build . --target all
+make VERBOSE=1
 ./sir-sfml
 ```
 Successivamente alla compilazione del progetto, per quanto riguarda gli unit test:
-
-![OPZIONE 1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1) 
 ```
-./run_point_tests
-./run_sir_tests
-```
-
-![OPZIONE 2](https://github.com/samuelelanzi/SIRmodel/blob/master/option2) 
-```
-./run_board_tests
+ctest
 ```
 
 > ### DA TERMINALE:
