@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 int main() {
+  // Create new epidemy
   constexpr int day = 60;
   SIR s0{};
   s0.susceptible = 900.;
@@ -12,14 +13,19 @@ int main() {
   Epidemy e1{s0, day};
   auto e = e1.create_model(0.00035, 0.12, 1000);
   print_epidemy(e);
-
+  
+  // Definisco le misure della window SFML
   constexpr int window_width = 900;
   constexpr int window_height = 900;
   constexpr int point_min_x = 0;
   constexpr int point_max_x = day;
   constexpr double point_min_y = 0.;
   constexpr double point_max_y = 1000;
-
+  
+  /*
+     Cicli che aggiungono punti del grafico 
+     all'interno di un vector
+  */
   std::vector<Point> pointsS{};
   for (int i = 0; i != day; ++i) {
     Point p1{i, e[i].susceptible};
@@ -62,10 +68,12 @@ int main() {
 
   if (window.isOpen()) {
     window.clear(sf::Color::Black);
-
+    
+    // Definisco e ricerco nelle cartelle un font
     sf::Font font;
     if(!font.loadFromFile("georgia.ttf")){}
-        
+    
+    // Scelgo cosa scrivere e il colore delle scritte in cima alla window
     sf::Text textS;
     textS.setString("   Susceptible");        
     textS.setFont(font);
@@ -87,6 +95,7 @@ int main() {
     textR.setFillColor(sf::Color::Blue);
     textR.setStyle(sf::Text::Bold);
 
+    //Definisco il punto (0, 0) visualizzato attraverso un circoletto bianco
     {
       constexpr auto radius = 5.f;
       constexpr auto outline_thickness = 2.f;
@@ -98,7 +107,8 @@ int main() {
       zero.move(to_window_frame({0, 0}));
       window.draw(zero);
     }
-
+    
+    // Disegno i punti nei tre vector
     for (auto const &p : pointsS) {
       constexpr auto radius = 5.f;
       sf::CircleShape c{radius};
