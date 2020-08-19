@@ -3,7 +3,7 @@
 
 #include "sir.cpp"
 
-TEST_CASE("Test Epidemy"){
+TEST_CASE("Test Epidemy") {
   constexpr int day = 60;
   SIR s0{};
   s0.susceptible = 900.;
