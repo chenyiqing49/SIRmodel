@@ -13,6 +13,7 @@ std::vector<SIR> Epidemy::create_model(double const &beta, double const &gamma, 
   for (int i = 1; i < n_day_; ++i) {
     auto const &prev = result.back();
     SIR s;
+    // SIR model's formulas
     s.susceptible =
         prev.susceptible - beta * prev.infectious * prev.susceptible;
     s.infectious = prev.infectious + beta * prev.infectious * prev.susceptible -
