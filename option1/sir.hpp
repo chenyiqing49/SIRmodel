@@ -1,7 +1,7 @@
 #ifndef SIR_H_INCLUDED
 #define SIR_H_INCLUDED
 
-#include<vector>
+#include <vector>
 
 struct SIR {
   double susceptible;
@@ -15,8 +15,9 @@ private:
   int n_day_;
 
 public:
-  Epidemy(SIR init, int n_day) : init_{init}, n_day_{n_day} {}
-
+  Epidemy(SIR init, int n_day) : init_{init}, n_day_{n_day} { }
+  
+  // declarations of the member functions
   SIR getInit();
   int getNday();
   
@@ -24,4 +25,3 @@ public:
 };
 
 #endif
-
