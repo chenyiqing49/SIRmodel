@@ -1,6 +1,7 @@
 #include "sir.hpp"
 #include <cassert>
 
+// declarations and definitions of the member functions
 SIR Epidemy::getInit() { return init_; }
 
 int Epidemy::getNday() { return n_day_; }
