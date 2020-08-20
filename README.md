@@ -1,7 +1,7 @@
 # SIRmodel
 Per compilare il progetto abbiamo due possibili modi: cmake (consigliato) o terminale.
 
-> ### ATTRAVERSO CMAKE (ninja file)
+> ### ATTRAVERSO CMAKE
 
 Come installare cmake (Ubuntu):
 ```
