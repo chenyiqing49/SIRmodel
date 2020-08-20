@@ -1,5 +1,9 @@
 # SIRmodel
-Per compilare il progetto abbiamo due possibili modi: cmake (consigliato) o terminale.
+Si tratta del modello matematico che descrive l'evoluzione di un epidemia (a questo livello in modo alquanto approssimato).
+Le formule principali sulle quali si basa il modello, utlizzate anche nel nostro progetto sono:
+$$
+a^2
+$$
 
 > ### ATTRAVERSO CMAKE
 
@@ -23,12 +27,6 @@ Successivamente alla compilazione del progetto, per quanto riguarda gli unit tes
 ctest
 ```
 
-> ### DA TERMINALE:
-```
-g++ -c main.cpp
-g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
-./sfml-app
-```
 > ### RISULTATI
 Compilando il file ![option1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1) otteniamo il grafico degli andamenti delle funzioni nel tempo S(t) (suscettibili), I(t) (infetti) e R(t) (rimossi):
 
