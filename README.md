@@ -1,10 +1,8 @@
 # SIRmodel
 Si tratta del modello matematico che descrive l'evoluzione di un epidemia (a questo livello in modo alquanto approssimato).
 Le formule principali sulle quali si basa il modello, utlizzate anche nel nostro progetto sono:
-```
-$
-a^2
-$
+```math
+S_i = S_{i - 1} - \beta I_{i - 1}S_{i - 1}
 ```
 
 > ### ATTRAVERSO CMAKE
