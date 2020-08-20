@@ -36,5 +36,6 @@ Compilando il file ![option1](https://github.com/samuelelanzi/SIRmodel/blob/mast
 
 Compilando il file ![option2](https://github.com/samuelelanzi/SIRmodel/blob/master/option2) otteniamo una simulazione dell'evolversi di un'epidemia secondo il modello SIR:
 
-![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/option2/display.png)
+![opzione2](https://github.com/samuelelanzi/SIRmodel/blob/master/option2/display1.png)
+![opzione2](https://github.com/samuelelanzi/SIRmodel/blob/master/option2/display2.png)
 
