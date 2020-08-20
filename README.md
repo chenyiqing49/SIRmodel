@@ -8,8 +8,6 @@ Le formule principali sulle quali si basa il modello, utlizzate anche nel nostro
 
 <img src="https://render.githubusercontent.com/render/math?math=R_i = R_{i - 1} - \gamma I_{i - 1}">
 
-![Per i dettagli](https://iol.unibo.it/pluginfile.php/612593/mod_resource/content/1/Programmazione%20per%20la%20fisica.pdf)
-
 > ### ATTRAVERSO CMAKE
 
 Come installare cmake (Ubuntu):
