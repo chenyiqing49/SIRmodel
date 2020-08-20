@@ -150,3 +150,5 @@ int main() {
     }
   }
 }
+
+//prova funzionamento upload automatico
