@@ -44,6 +44,14 @@ public:
 
   bool is_R() const { return state_ == State::Recovered; }
 };
+
+inline bool operator==(Person const &l, Person const &r) {
+  return l.getState() == r.getState() && l.getDays() == r.getDays();
+}
+
+inline bool operator!=(Person const &l, Person const &r) {
+  return l.getState() != r.getState() && l.getDays() != r.getDays();
+}
 } // namespace SIR
 
 #endif
