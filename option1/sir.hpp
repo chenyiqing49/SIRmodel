@@ -1,5 +1,5 @@
-#ifndef SIR_H_INCLUDED
-#define SIR_H_INCLUDED
+#ifndef SIR_HPP
+#define SIR_HPP
 
 #include <vector>
 
