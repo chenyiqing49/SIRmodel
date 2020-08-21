@@ -21,7 +21,7 @@ int main() {
             board(x,y).infect();
         }
     }
-    //aggiungere controlli per n minimo di punti 
+    //aggiungere controlli per n minimo di punti e controllo punti inclusi nel dominio della board
 
   /*
   board(114, 114).infect();
