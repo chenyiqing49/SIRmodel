@@ -5,17 +5,31 @@
 #include "point.hpp"
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 int main() {
   constexpr int dim = 220;
   SIR::Board board{dim};
   SIR::Display display{dim};
+    
+    int x;
+    int y;
+    std::cout << "Inserire le coordinate delle celle infette (separando x e y da uno spazio). Scrivere 500 per interrompere l'acquisizione di punti"; //trovare modo migliore
+    while (x!= 500){
+        std::cin >> x >> y;
+        if( x!= 500){
+            board(x,y).infect();
+        }
+    }
+    //aggiungere controlli per n minimo di punti 
 
+  /*
   board(114, 114).infect();
   board(113, 113).infect();
   board(114, 113).infect();
   board(115, 113).infect();
   board(116, 114).infect();
+   */
 
   display.draw(board);
   std::cout << "Press any key to start the animation.\n";
