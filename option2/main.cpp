@@ -35,12 +35,12 @@ int main() {
   std::cout << "Press any key to start the animation.\n";
   display.wait_key_pressed();
 
-  // constexpr int d = 500;
+  constexpr int d = 600;
 
   constexpr int window_width = 700;
   constexpr int window_height = 700;
   constexpr int point_min_x = 0;
-  constexpr int point_max_x = 600;
+  constexpr int point_max_x = d;
   constexpr double point_min_y = 0;
   constexpr double point_max_y = 48400;
 
@@ -85,7 +85,7 @@ int main() {
       window1.draw(zero);
     }
 
-    for (int i = 0; i != 600; ++i) {
+    for (int i = 0; i != d; ++i) {
       std::cout << "\033c";
       std::cout << "S: " << count_S(board) << '\n'
                 << "I: " << count_I(board) << '\n'
@@ -104,7 +104,7 @@ int main() {
       display.draw(board);
 
       for (auto const &p : pointsS) {
-        constexpr auto radius = 2.f;
+        constexpr auto radius = 1.f;
         sf::CircleShape c1{radius};
         c1.setFillColor(sf::Color::Red);
         c1.setOrigin(sf::Vector2f{radius, radius});
@@ -113,7 +113,7 @@ int main() {
       }
 
       for (auto const &p : pointsI) {
-        constexpr auto radius = 2.f;
+        constexpr auto radius = 1.f;
         sf::CircleShape c2{radius};
         c2.setFillColor(sf::Color::Green);
         c2.setOrigin(sf::Vector2f{radius, radius});
@@ -122,7 +122,7 @@ int main() {
       }
 
       for (auto const &p : pointsR) {
-        constexpr auto radius = 2.f;
+        constexpr auto radius = 1.f;
         sf::CircleShape c3{radius};
         c3.setFillColor(sf::Color::Blue);
         c3.setOrigin(sf::Vector2f{radius, radius});
@@ -131,7 +131,7 @@ int main() {
       }
 
       window1.display();
-      std::this_thread::sleep_for(std::chrono::milliseconds(30));
+      std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
     sf::Event event;
     while (window1.waitEvent(event)) {
