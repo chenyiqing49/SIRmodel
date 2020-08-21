@@ -26,7 +26,7 @@ int main() {
   constexpr int point_min_x = 0;
   constexpr int point_max_x = day;
   constexpr double point_min_y = 0.;
-  constexpr double point_max_y = N;
+  constexpr double point_max_y = static_cast<double>(N);
 
   // Loops that add points in a container
   std::vector<Point> pointsS{};
@@ -34,18 +34,21 @@ int main() {
     Point p1{i, e[i].susceptible};
     pointsS.push_back(p1);
   }
-
+  assert(pointsS.size() > 0);
+  
   std::vector<Point> pointsI{};
   for (int i = 0; i != day; ++i) {
     Point p2{i, e[i].infectious};
     pointsI.push_back(p2);
   }
+  assert(pointsI.size() > 0);
 
   std::vector<Point> pointsR{};
   for (int i = 0; i != day; ++i) {
     Point p3{i, e[i].recovered};
     pointsR.push_back(p3);
   }
+  assert(pointsR.size() > 0);
 
   // Create the window
   sf::ContextSettings settings;
@@ -75,7 +78,7 @@ int main() {
     // Define and research font 
     sf::Font font;
     if (!font.loadFromFile("georgia.ttf")) {
-    }
+    } 
 
     // Choose what to write
     sf::Text textS;
