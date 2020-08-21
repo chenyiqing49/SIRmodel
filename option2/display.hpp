@@ -9,7 +9,7 @@ class Display {
   int m_board_side;
   sf::RenderWindow m_window;
 
-  static constexpr int s_cell_size = 5;
+  static constexpr int s_cell_size = 3;
 
   static int display_side(int board_side) {
     // don't show the borders of the board
