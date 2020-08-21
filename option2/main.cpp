@@ -23,13 +23,13 @@ int main() {
     }
     //aggiungere controlli per n minimo di punti e controllo punti inclusi nel dominio della board
 
-  /*
+  
   board(114, 114).infect();
   board(113, 113).infect();
   board(114, 113).infect();
   board(115, 113).infect();
   board(116, 114).infect();
-   */
+   
 
   display.draw(board);
   std::cout << "Press any key to start the animation.\n";
