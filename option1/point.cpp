@@ -11,4 +11,3 @@ bool operator!=(Point const& l, Point const& r)
 {
   return !(l == r);
 }
-
