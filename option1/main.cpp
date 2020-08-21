@@ -4,24 +4,30 @@
 #include <SFML/Graphics.hpp>
 
 int main() {
-  // Create new epidemy
+  // Costant's values
+  constexpr double beta = 0.00035;
+  constexpr double gamma = 0.12;
+  constexpr int N = 1000;
   constexpr int day = 60;
+  constexpr double I = 100.;
+
+  // Create a new epidemy
   SIR s0{};
-  s0.susceptible = 900.;
-  s0.infectious = 100.;
+  s0.susceptible = N - I;
+  s0.infectious = I;
   s0.recovered = 0.;
   Epidemy e1{s0, day};
-  auto e = e1.create_model(0.00035, 0.12, 1000);
+  auto e = e1.create_model(beta, gamma, N);
   print_epidemy(e);
-  
-  // Define size of the window SFML
+
+  // Define size of the SFML's window
   constexpr int window_width = 900;
   constexpr int window_height = 900;
   constexpr int point_min_x = 0;
   constexpr int point_max_x = day;
   constexpr double point_min_y = 0.;
-  constexpr double point_max_y = 1000;
-  
+  constexpr double point_max_y = N;
+
   // Loops that add points in a container
   std::vector<Point> pointsS{};
   for (int i = 0; i != day; ++i) {
@@ -65,28 +71,29 @@ int main() {
 
   if (window.isOpen()) {
     window.clear(sf::Color::Black);
-    
-    // Define and research font
+
+    // Define and research font 
     sf::Font font;
-    if(!font.loadFromFile("georgia.ttf")){}
-    
+    if (!font.loadFromFile("georgia.ttf")) {
+    }
+
     // Choose what to write
     sf::Text textS;
-    textS.setString("   Susceptible");        
+    textS.setString(" Susceptible");
     textS.setFont(font);
     textS.setCharacterSize(24);
     textS.setFillColor(sf::Color::Red);
     textS.setStyle(sf::Text::Bold);
 
     sf::Text textI;
-    textI.setString("                         Infectious");        
+    textI.setString("\t\t\t\t\t\tInfectious");
     textI.setFont(font);
     textI.setCharacterSize(24);
     textI.setFillColor(sf::Color::Green);
     textI.setStyle(sf::Text::Bold);
 
     sf::Text textR;
-    textR.setString("                                             Recovered");        
+    textR.setString("\t\t\t\t\t\t\t\t\t\t\tRecovered");
     textR.setFont(font);
     textR.setCharacterSize(24);
     textR.setFillColor(sf::Color::Blue);
@@ -104,7 +111,7 @@ int main() {
       zero.move(to_window_frame({0, 0}));
       window.draw(zero);
     }
-    
+
     // Draw the points contained in the vectors
     for (auto const &p : pointsS) {
       constexpr auto radius = 5.f;
@@ -136,7 +143,6 @@ int main() {
     window.draw(textS);
     window.draw(textI);
     window.draw(textR);
-    
     window.display();
 
     sf::Event event;
