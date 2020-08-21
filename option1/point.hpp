@@ -1,5 +1,5 @@
-#ifndef POINT_H_INCLUDED
-#define POINT_H_INCLUDED
+#ifndef POINT_HPP
+#define POINT_HPP
 
 struct Point {
   int x;
