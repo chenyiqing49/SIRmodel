@@ -4,7 +4,7 @@
 #include <random>
 
 namespace SIR {
-enum class State : char { Susceptible, Infectious, Recovered };
+enum class State { Susceptible, Infectious, Recovered };
 
 class Person {
 private:
