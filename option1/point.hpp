@@ -7,4 +7,3 @@ struct Point {
 };
 
 #endif
-
