@@ -1,12 +1,12 @@
 #include "point.hpp"
 
-// overload dell'operatore ==
+// overload of the == operator
 bool operator==(Point const& l, Point const& r)
 {
   return l.x == r.x && l.y == r.y;
 }
 
-// overload dell'operatore !=
+// overload of the != operator
 bool operator!=(Point const& l, Point const& r)
 {
   return !(l == r);
