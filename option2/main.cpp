@@ -7,7 +7,7 @@
 #include <thread>
 
 int main() {
-  constexpr int dim = 128;
+  constexpr int dim = 256;
   SIR::Board board{dim};
   SIR::Display display{dim};
 
