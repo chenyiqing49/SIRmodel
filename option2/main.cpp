@@ -10,8 +10,7 @@
 int main() {
   constexpr int dim = 220;
   SIR::Board board{dim};
-  SIR::Display display{dim};
-    
+
     int x;
     int y;
     std::cout << "Inserire le coordinate delle celle infette (separando x e y da uno spazio). Scrivere 500 per interrompere l'acquisizione di punti"; //trovare modo migliore
@@ -30,7 +29,7 @@ int main() {
   board(115, 113).infect();
   board(116, 114).infect();
    
-
+  SIR::Display display{dim};
   display.draw(board);
   std::cout << "Press any key to start the animation.\n";
   display.wait_key_pressed();
@@ -48,8 +47,7 @@ int main() {
   sf::ContextSettings settings;
   settings.antialiasingLevel = 8;
 
-  sf::RenderWindow window1(sf::VideoMode(window_width, window_height),
-                           "SIR graphs", sf::Style::Default, settings);
+  sf::RenderWindow window1(sf::VideoMode(window_width, window_height), "SIR graphs", sf::Style::Default, settings);
 
   // (lambda) function to convert a point to the coordinates of the SFML window
   auto to_window_frame = [](SIR::Point const &p) {
