@@ -14,7 +14,7 @@ int main() {
   auto e = e1.create_model(0.00035, 0.12, 1000);
   print_epidemy(e);
   
-  // Definisco le misure della window SFML
+  // Define size of the window SFML
   constexpr int window_width = 900;
   constexpr int window_height = 900;
   constexpr int point_min_x = 0;
@@ -22,10 +22,7 @@ int main() {
   constexpr double point_min_y = 0.;
   constexpr double point_max_y = 1000;
   
-  /*
-     Cicli che aggiungono punti del grafico 
-     all'interno di un vector
-  */
+  // Loops that add points in a container
   std::vector<Point> pointsS{};
   for (int i = 0; i != day; ++i) {
     Point p1{i, e[i].susceptible};
@@ -44,16 +41,16 @@ int main() {
     pointsR.push_back(p3);
   }
 
-  // create the window
+  // Create the window
   sf::ContextSettings settings;
   settings.antialiasingLevel = 8;
 
   sf::RenderWindow window(sf::VideoMode(window_width, window_height),
                           "SIR Model", sf::Style::Default, settings);
 
-  // (lambda) function to convert a point to the coordinates of the SFML window
+  // (lambda) Function to convert a point to the coordinates of the SFML window
   auto to_window_frame = [](Point const &p) {
-    // leave a ten-pixel border
+    // Leave a thirty-pixel border
     constexpr int inner_sep = 30;
 
     constexpr int canvas_width = window_width - 2 * inner_sep;
@@ -69,11 +66,11 @@ int main() {
   if (window.isOpen()) {
     window.clear(sf::Color::Black);
     
-    // Definisco e ricerco nelle cartelle un font
+    // Define and research font
     sf::Font font;
     if(!font.loadFromFile("georgia.ttf")){}
     
-    // Scelgo cosa scrivere e il colore delle scritte in cima alla window
+    // Choose what to write
     sf::Text textS;
     textS.setString("   Susceptible");        
     textS.setFont(font);
@@ -95,7 +92,7 @@ int main() {
     textR.setFillColor(sf::Color::Blue);
     textR.setStyle(sf::Text::Bold);
 
-    //Definisco il punto (0, 0) visualizzato attraverso un circoletto bianco
+    // Define the (0, 0) point drawn as a little white circle
     {
       constexpr auto radius = 5.f;
       constexpr auto outline_thickness = 2.f;
@@ -108,7 +105,7 @@ int main() {
       window.draw(zero);
     }
     
-    // Disegno i punti nei tre vector
+    // Draw the points contained in the vectors
     for (auto const &p : pointsS) {
       constexpr auto radius = 5.f;
       sf::CircleShape c{radius};
@@ -139,6 +136,7 @@ int main() {
     window.draw(textS);
     window.draw(textI);
     window.draw(textR);
+    
     window.display();
 
     sf::Event event;
@@ -150,5 +148,3 @@ int main() {
     }
   }
 }
-
-//prova funzionamento upload automatico
