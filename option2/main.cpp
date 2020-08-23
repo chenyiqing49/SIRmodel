@@ -13,7 +13,7 @@ int main() {
   
   while(display.wait_key()) {
     display.draw(board);
-    auto p1 = display.setInfect();
+    auto p1 = display.getMousePosition();
     int X = p1.x / display.getCellSize();
     int Y = p1.y / display.getCellSize();
     board(Y, X).infect();
