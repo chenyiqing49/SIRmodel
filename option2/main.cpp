@@ -11,7 +11,7 @@ int main() {
   SIR::Board board{dim};
   SIR::Display display{dim};
 
-  while(display.wait_key()){
+  while(display.wait_key()) {
     display.draw(board);
     auto p1 = display.getMousePosition();
     board(p1.x, p1.y).infect();
