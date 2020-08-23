@@ -1,7 +1,9 @@
 #ifndef SIR_DISPLAY_HPP
 #define SIR_DISPLAY_HPP
 
+#include <stdexcept>
 #include "board.hpp"
+#include "point.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace SIR {
@@ -19,12 +21,24 @@ class Display {
   static constexpr auto s_window_title = "SIR";
 
 public:
+
   Display(int board_side)
       : m_board_side{board_side}, m_window{
                                       sf::VideoMode(display_side(board_side),
                                                     display_side(board_side)),
-                                      s_window_title, sf::Style::Close} {}
-                                        
+                                      s_window_title, sf::Style::Close} {}   
+
+  Point getMousePosition() {
+    Point p{};
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+      p.x = sf::Mouse::getPosition(m_window).x;
+      p.y = sf::Mouse::getPosition(m_window).y;
+      return p;
+    } else {
+      return p;
+    }
+  }
+
   void draw(Board const &board) {
     assert(m_board_side == board.size());
 
@@ -55,17 +69,18 @@ public:
           m_window.draw(rectR);
         }
       }
-    }
-
-    m_window.display();
+    }    m_window.display();
   }
 
-  void wait_key_pressed() {
+  bool wait_key() {
     sf::Event event;
 
     m_window.waitEvent(event);
-    while (event.type != sf::Event::KeyPressed) {
+    if(event.type != sf::Event::KeyPressed){
       m_window.waitEvent(event);
+      return true;
+    } else {
+      return false;
     }
   }
 };
