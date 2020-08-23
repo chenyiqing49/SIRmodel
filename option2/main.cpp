@@ -10,11 +10,13 @@ int main() {
   constexpr int dim = 256;
   SIR::Board board{dim};
   SIR::Display display{dim};
-
+  
   while(display.wait_key()) {
     display.draw(board);
-    auto p1 = display.getMousePosition();
-    board(p1.x, p1.y).infect();
+    auto p1 = display.setInfect();
+    int X = p1.x / display.getCellSize();
+    int Y = p1.y / display.getCellSize();
+    board(Y, X).infect();
   }
   
 /*
