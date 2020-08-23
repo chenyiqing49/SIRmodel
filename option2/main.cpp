@@ -11,16 +11,20 @@ int main() {
   SIR::Board board{dim};
   SIR::Display display{dim};
 
+  while(display.wait_key()){
+    display.draw(board);
+    auto p1 = display.setInfect();
+    board(p1.x, p1.y).infect();
+  }
+  
+/*
   board(114, 114).infect();
   board(113, 113).infect();
   board(114, 113).infect();
   board(115, 113).infect();
   board(116, 114).infect();
-
-  display.draw(board);
-  std::cout << "Press any key to start the animation.\n";
-  display.wait_key_pressed();
-
+*/
+  
   constexpr int d = 700;
 
   constexpr int window_width = d + 20;
