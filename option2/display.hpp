@@ -1,7 +1,6 @@
 #ifndef SIR_DISPLAY_HPP
 #define SIR_DISPLAY_HPP
 
-#include <stdexcept>
 #include "board.hpp"
 #include "point.hpp"
 #include <SFML/Graphics.hpp>
