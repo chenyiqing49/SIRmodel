@@ -25,7 +25,9 @@ public:
       : m_board_side{board_side}, m_window{
                                       sf::VideoMode(display_side(board_side),
                                                     display_side(board_side)),
-                                      s_window_title, sf::Style::Close} {}   
+                                      s_window_title, sf::Style::Close} {}  
+  
+  int getCellSize() const { return s_cell_size; }
 
   Point getMousePosition() {
     Point p{};
