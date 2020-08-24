@@ -2,14 +2,23 @@
 #include "print.cpp"
 #include "sir.cpp"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 int main() {
   // Costant's values
-  constexpr double beta = 0.00035;
-  constexpr double gamma = 0.12;
+  //constexpr double beta = 0.00035; //probabilità di contagio   ] 0,1 [
+  //constexpr double gamma = 0.12; //probabilità di guarigione   ] 0,1 [
   constexpr int N = 1000;
   constexpr int day = 60;
-  constexpr double I = 100.;
+  //constexpr double I = 100.;  //  >0
+    
+    std::cout << "Immettere i valori di Beta, Gamma e il numero iniziale di infetti" << "\n";
+    std::cin >> double beta >> double gamma >> double I;
+    assert (beta > 0);
+    assert (beta < 1);
+    assert (gamma >0);
+    assert (gamma < 1);
+    assert (I> 0);
 
   // Create a new epidemy
   SIR s0{};
