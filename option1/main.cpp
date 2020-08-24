@@ -18,7 +18,7 @@ int main() {
     assert (beta < 1);
     assert (gamma >0);
     assert (gamma < 1);
-    assert (I> 0);
+    assert (I > 0);
 
   // Create a new epidemy
   SIR s0{};
