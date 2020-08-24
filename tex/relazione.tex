@@ -13,6 +13,7 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage {quoting}
+\usepackage{subfig}
 
 \title{\huge{Simulazione diffusione epidemia secondo modello SIR}} 
 \author{Anastasi Edoardo \  Lanzi Samuele \ Merola Samuele}
@@ -38,7 +39,7 @@
 \ \\
 ....
 \ \\
-...
+...  indicare anche modello SIR e previsioni (viene citato in risultati)
 \ \\
 .....
 \ \\
@@ -88,17 +89,31 @@ oppure con l'esecuzione del programma tramite il comando
  \verb! ./sir-sfml !
 \end{quoting}
 \section{Risultati output e interpretazione}
-....
-\ \\
-....
-\ \\
-...
-\ \\
-.....
-\ \\
-...
-\ \\
-....
+\subsection{Modalità 1}
+Eseguendo la prima modalità del programma, verranno mostrati in output del terminale tramite uno  \verb! std::cout ! i valori di S, I e R per ogni giorno di simulazione [Figura 1 (a)]; inoltre, grazie alla libreria SFML, verrà aperto un grafico che rappresenta tali valori in funzione dei giorni trascorsi. Si vedranno quindi dei punti rossi che rappresentano il numero di persone suscettibili per giorno, dei punti blu che rappresentano i non suscettibili per giorno e dei punti verdi che rappresentano quanti sono infetti in quel giorno [Figura 1 (b)]. Si può notare che il risultato è coerente con il modello SIR atteso (si veda Scelte progettuali e implementative).
+
+
+\begin{figure}
+\centering
+\subfloat[][\emph{output tramite finestra grafica SFML}]
+{\includegraphics[width=.60\textwidth]{Figura_1.png}} \quad \subfloat[][\emph{standard output da terminale}]
+{\includegraphics[width=.25\textwidth]{Figura_2.png}} \\
+\caption{}
+\label{fig:subfig}
+\end{figure}
+
+
+\subsection{Modalità 2}
+Eseguendo la seconda modalità del programma, con il mouse si potrà fare click su ogni cella che si desidera considerare infetta alla situazione iniziale, poi premendo un qualunque tasto sulla tastiera si avvierà la simulazione del contagio. Si apriranno due finestre, nella prima [Figura 2 (a)] si vede una scacchiera composta da 256 celle per lato. Ciascuna cella sarà colorata di rosso se rappresenta un individuo suscettibile alla malattia, di verde se è infetto e blu se è già stato contagiato. La griglia si aggiorna ogni 30ms che rappresenta un giorno, le persone infette rimarranno tali per un numero di giorni distribuito uniformemente tra 14 e 20. Contestualmente, nell'altra finestra [Figura 2 (a)] vengono graficati i valori di S(t) I(t) e R(t) conteggiando i valori reali dell'attuale simulazione.
+
+\begin{figure}
+\centering
+\subfloat[][\emph{griglia 256x256 rappresentante la situazione di ogni individuo}]
+{\includegraphics[width=.45\textwidth]{Figura_3.png}} \quad \subfloat[][\emph{grafico della situazione di contagio secondo il modello attuale}]
+{\includegraphics[width=.45\textwidth]{Figura_4.png}} \\
+\caption{}
+\label{fig:subfig}
+\end{figure}
 
 \section{Test e condizioni per la corretta esecuzione}
 ....
