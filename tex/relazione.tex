@@ -12,6 +12,7 @@
 \usepackage[a4paper, top=1.27cm, bottom=2cm, left=1.27cm, right=1.27cm]{geometry}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage {quoting}
 
 \title{\huge{Simulazione diffusione epidemia secondo modello SIR}} 
 \author{Anastasi Edoardo \  Lanzi Samuele \ Merola Samuele}
@@ -58,17 +59,34 @@
 ....
 
 \section{Istruzioni di compilazione e esecuzione}
-....
+
+Per la corretta compilazione del progetto è necessario l'utilizzo di CMake. %e librerie SFML??
+Se non si possiede CMake, è necessario installarlo:
+\begin {quoting}
+ \verb! sudo apt-get install cmake !
+\end{quoting}
 \ \\
-....
 \ \\
-...
-\ \\
-.....
-\ \\
-...
-\ \\
-....
+Dopo aver installato CMake, si può passare alla compilazione:
+\begin {quoting}
+ \begin {verbatim}
+cd SIRmodel
+cd option1 (cd option2)
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake --build . --target all
+make VERBOSE=1 
+\end{verbatim}
+\end{quoting}
+Ora il progetto è compilato, si può procedere con i test tramite il comando
+\begin {quoting}
+ \verb! ctest !
+\end{quoting}
+oppure con l'esecuzione del programma tramite il comando
+\begin {quoting}
+ \verb! ./sir-sfml !
+\end{quoting}
 \section{Risultati output e interpretazione}
 ....
 \ \\
