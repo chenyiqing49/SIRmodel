@@ -70,7 +70,8 @@ public:
           m_window.draw(rectR);
         }
       }
-    }    m_window.display();
+    }
+    m_window.display();
   }
 
   bool wait_key() {
