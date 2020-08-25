@@ -26,7 +26,7 @@
 \begin{abstract}
  Il nostro programma si sviluppa in due modalità:
  \begin{itemize}
-	\item[Modalità 1] Permette di ottenere l'andamento di persone suscettibili, infetti e non suscettibili in un'epidemia in funzione del tempo. Riceve in input i valori di $\beta$ e $\gamma$ (valori caratteristici di ogni epidemia) e presenta in output i valori di suscettibili, infetti e non suscettibili per ogni giorno (vengono simulati 60 giorni, partendo da una situazione di 100 infetti su una popolazione di 1000 unità); i valori in output vengono presentati sia in tabella che in un grafico.
+	\item[Modalità 1] Permette di ottenere l'andamento di persone suscettibili, infetti e rimossi in un'epidemia in funzione del tempo. Riceve in input i valori di $\beta$ e $\gamma$ (valori caratteristici di ogni epidemia) e presenta in output i valori di suscettibili, infetti e rimossi per ogni giorno (vengono simulati 60 giorni, partendo da una situazione di 100 infetti su una popolazione di 1000 unità); i valori in output vengono presentati sia in tabella che in un grafico.
  \item[Modalità 2] Permette di visualizzare in una griglia grafica lo stato di ciascuna unità durante il corso di una epidemia, allo stesso tempo viene stampato il grafico delle curve di suscettibili, infetti e guariti in funzione del tempo nell'epidemia simulata. In input si assegnano le celle da ritenere infette all'origine con click del mouse sulle celle. In output, la situazione dell'epidemia in aggiornamento per ogni giorno fino al termine del contagio.
   \end{itemize}
 \end{abstract}
@@ -37,15 +37,15 @@
 \subsection{Modalità 1}
 Il modello SIR è un modello matematico che descrive l'evoluzione di una epidemia. L'andamento di S, I, R è descritto dalle seguenti formule:
 
-\[
+$$
 S_i = S_{i - 1} - \beta I_{i - 1}S_{i - 1} 
-\]
-\[
+$$
+$$
 I_i = I_{i - 1} - \beta I_{i - 1}S_{i - 1} - \gamma I_{i - 1}
-\]
-\[
+$$
+$$
 R_i = R_{i - 1} - \gamma I_{i - 1}
- \]
+$$
 $\beta$ indica la probabilità di contagio ed è compresa tra 0 e 1 e $\gamma$ indica la probabilità di guarigione, anch'essa compresa tra 0 e 1.
 \ \\
 Il nostro programma utilizza queste formule per calcolare i valori di S, I e R per ogni giorno i-esimo (si veda  \textbf{\textit{sir.cpp}}).
