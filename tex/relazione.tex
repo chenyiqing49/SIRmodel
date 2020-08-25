@@ -100,17 +100,17 @@ Se non si possiede CMake, è necessario installarlo:
 \ \\
 \ \\
 Dopo aver installato CMake, si può passare alla compilazione:
-\begin {quoting}
- \begin {verbatim}
-cd SIRmodel
-cd option1 (cd option2)
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-cmake --build . --target all
-make VERBOSE=1 
-\end{verbatim}
-\end{quoting}
+
+\begin{lstlisting}
+	cd SIRmodel
+	cd option1 (cd option2)
+	mkdir build
+	cd build
+	cmake -DCMAKE_BUILD_TYPE=Debug ..
+	cmake --build . --target all
+	make VERBOSE=1 
+\end{lstlisting}
+
 Ora il progetto è compilato, si può procedere con i test tramite il comando
 \begin {quoting}
  \verb! ctest !
