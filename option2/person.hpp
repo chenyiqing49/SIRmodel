@@ -5,6 +5,7 @@
 
 namespace SIR {
 enum class State { Susceptible, Infectious, Recovered };
+constexpr int probabilityToInfect = 50;
 
 class Person {
 private:
@@ -33,9 +34,9 @@ public:
     int days = distrib(gen);
       
       std::uniform_int_distribution<> distrib2(0, 100);
-      int probab = distrib2(gen);
+      int chance = distrib2(gen);
 
-    if ((state_ == State::Susceptible)&&(probab > 50)) {
+    if ((state_ == State::Susceptible)&&(chance < probabilityToInfect)) {
       days_ = days;
       state_ = State::Infectious;
     }
