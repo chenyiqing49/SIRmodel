@@ -16,7 +16,7 @@ int main() {
     auto p1 = display.getMousePosition();
     int X = p1.x / display.getCellSize();
     int Y = p1.y / display.getCellSize();
-    board(Y, X).infect();
+    board(Y, X).infectSure();
   }
   
 /*
