@@ -15,8 +15,6 @@ private:
 public:
   Board(int n) : n_{n}, board_(n * n) {}
 
-  auto getPopulation() const { return board_; }
-
   Person operator()(int i, int j) const {
     Person p;
     return (i >= 0 && i < n_ && j >= 0 && j < n_) ? board_[i * n_ + j] : p;
