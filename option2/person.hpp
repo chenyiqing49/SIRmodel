@@ -33,10 +33,10 @@ public:
     std::uniform_int_distribution<> distrib(14, 20);
     int days = distrib(gen);
       
-      std::uniform_int_distribution<> distrib2(0, 100);
-      int chance = distrib2(gen);
+    std::uniform_int_distribution<> distrib2(0, 100);
+    int chance = distrib2(gen);
 
-    if ((state_ == State::Susceptible)&&(chance < probabilityToInfect)) {
+    if ((state_ == State::Susceptible)&&(chance <= probabilityToInfect)) {
       days_ = days;
       state_ = State::Infectious;
     }
@@ -65,7 +65,7 @@ inline bool operator==(Person const &l, Person const &r) {
 }
 
 inline bool operator!=(Person const &l, Person const &r) {
-  return l.getState() != r.getState() && l.getDays() != r.getDays();
+  return !(l.getState() == r.getState() && l.getDays() == r.getDays());
 }
 
 } // namespace SIR
