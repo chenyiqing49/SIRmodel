@@ -31,12 +31,26 @@ public:
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(14, 20);
     int days = distrib(gen);
+      
+      std::uniform_int_distribution<> distrib2(0, 100);
+      int probab = distrib2(gen);
 
-    if (state_ == State::Susceptible) {
+    if ((state_ == State::Susceptible)&&(probab > 50)) {
       days_ = days;
       state_ = State::Infectious;
     }
   }
+    void infectSure() {
+      std::random_device rd;
+      std::mt19937 gen(rd());
+      std::uniform_int_distribution<> distrib(14, 20);
+      int days = distrib(gen);
+
+      if (state_ == State::Susceptible) {
+        days_ = days;
+        state_ = State::Infectious;
+      }
+    }
 
   bool is_S() const { return state_ == State::Susceptible; }
 
