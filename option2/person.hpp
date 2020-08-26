@@ -2,10 +2,12 @@
 #define SIR_PERSON_HPP
 
 #include <random>
+#include <cassert>
 
 namespace SIR {
 enum class State { Susceptible, Infectious, Recovered };
 constexpr int probabilityToInfect = 50;
+assert (probabilityToInfect >= 0 && probabilityToInfect <= 100);
 
 class Person {
 private:
