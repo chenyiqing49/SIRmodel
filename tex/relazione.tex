@@ -75,10 +75,10 @@ $$
 S_i = S_{i - 1} - \beta I_{i - 1}S_{i - 1} 
 $$
 $$
-I_i = I_{i - 1} - \beta I_{i - 1}S_{i - 1} - \gamma I_{i - 1}
+I_i = I_{i - 1} + \beta I_{i - 1}S_{i - 1} - \gamma I_{i - 1}
 $$
 $$
-R_i = R_{i - 1} - \gamma I_{i - 1}
+R_i = R_{i - 1} + \gamma I_{i - 1}
 $$
 $\beta$ indica la probabilità di contagio ed è compresa tra 0 e 1 e $\gamma$ indica la probabilità di guarigione, anch'essa compresa tra 0 e 1.
 \ \\
