@@ -36,7 +36,7 @@ public:
       p.y = sf::Mouse::getPosition(m_window).y;
       return p;
     } else {
-      return p;
+      return p; //controllare: se omesso questo else la compilazione ha un warning perchè la funzione può ritornare void anzichè point. Se scritto così però se si preme con il mouse fuori dalla finestra, il programma crasha
     }
   }
 
