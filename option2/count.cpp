@@ -1,7 +1,7 @@
 #include "board.hpp"
 
 int count_S(SIR::Board const &board) {
-  int S;
+  int S =0;
   for (int i = 0; i != board.size(); ++i) {
     for (int j = 0; j != board.size(); ++j) {
       if (board(i, j).is_S()) {
