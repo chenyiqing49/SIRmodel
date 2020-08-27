@@ -11,6 +11,7 @@ int main() {
   SIR::Board board{dim};
   SIR::Display display{dim};
 
+    //Infect cells clicked by mouse
   while (display.wait_key()) {
     display.draw(board);
     auto p1 = display.getMousePosition();
@@ -18,14 +19,6 @@ int main() {
     int Y = p1.y / display.getCellSize();
     board(Y, X).infectSure();
   }
-
-  /*
-    board(114, 114).infect();
-    board(113, 113).infect();
-    board(114, 113).infect();
-    board(115, 113).infect();
-    board(116, 114).infect();
-  */
 
   constexpr int d = 700;
 
@@ -66,6 +59,7 @@ int main() {
     std::vector<SIR::Point> pointsR{};
 
     {
+        //set the origin
       constexpr auto radius_O = 5.f;
       constexpr auto outline_thickness = 2.f;
       sf::CircleShape zero{radius_O};
@@ -78,18 +72,22 @@ int main() {
     }
 
     for (int i = 0; i != d; ++i) {
+        int S_value = count_S(board);
+        int I_value = count_I(board);
+        int R_value = count_R(board);
+        
       std::cout << "\033c";
-      std::cout << "S: " << count_S(board) << '\n'
-                << "I: " << count_I(board) << '\n'
-                << "R: " << count_R(board) << '\n';
+      std::cout << "S: " << S_value << '\n'
+                << "I: " << I_value << '\n'
+                << "R: " << R_value << '\n';
 
-      SIR::Point p1{i, count_S(board)};
+      SIR::Point p1{i, S_value};
       pointsS.push_back(p1);
 
-      SIR::Point p2{i, count_I(board)};
+      SIR::Point p2{i, I_value};
       pointsI.push_back(p2);
 
-      SIR::Point p3{i, count_R(board)};
+      SIR::Point p3{i, R_value};
       pointsR.push_back(p3);
 
       board = evolve(board);
