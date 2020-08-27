@@ -10,23 +10,23 @@ int main() {
   constexpr int dim = 256;
   SIR::Board board{dim};
   SIR::Display display{dim};
-  
-  while(display.wait_key()) {
+
+  while (display.wait_key()) {
     display.draw(board);
     auto p1 = display.getMousePosition();
     int X = p1.x / display.getCellSize();
     int Y = p1.y / display.getCellSize();
     board(Y, X).infectSure();
   }
-  
-/*
-  board(114, 114).infect();
-  board(113, 113).infect();
-  board(114, 113).infect();
-  board(115, 113).infect();
-  board(116, 114).infect();
-*/
-  
+
+  /*
+    board(114, 114).infect();
+    board(113, 113).infect();
+    board(114, 113).infect();
+    board(115, 113).infect();
+    board(116, 114).infect();
+  */
+
   constexpr int d = 700;
 
   constexpr int window_width = d + 20;
@@ -66,13 +66,13 @@ int main() {
     std::vector<SIR::Point> pointsR{};
 
     {
-      constexpr auto radius = 5.f;
+      constexpr auto radius_O = 5.f;
       constexpr auto outline_thickness = 2.f;
-      sf::CircleShape zero{radius};
+      sf::CircleShape zero{radius_O};
       zero.setFillColor(sf::Color::Black);
       zero.setOutlineThickness(outline_thickness);
       zero.setOutlineColor(sf::Color::White);
-      zero.setOrigin(sf::Vector2f{radius, radius});
+      zero.setOrigin(sf::Vector2f{radius_O, radius_O});
       zero.move(to_window_frame({0, 0}));
       window1.draw(zero);
     }
@@ -95,26 +95,26 @@ int main() {
       board = evolve(board);
       display.draw(board);
 
-        constexpr auto radius = 1.f;
-              
-        sf::CircleShape c1{radius};
-        c1.setFillColor(sf::Color::Red);
-        c1.setOrigin(sf::Vector2f{radius, radius});
-        c1.move(to_window_frame(p1));
-        window1.draw(c1);
-            
-        sf::CircleShape c2{radius};
-        c2.setFillColor(sf::Color::Green);
-        c2.setOrigin(sf::Vector2f{radius, radius});
-        c2.move(to_window_frame(p2));
-        window1.draw(c2);
-          
-        sf::CircleShape c3{radius};
-        c3.setFillColor(sf::Color::Blue);
-        c3.setOrigin(sf::Vector2f{radius, radius});
-        c3.move(to_window_frame(p3));
-        window1.draw(c3);
-        
+      constexpr auto radius = 1.f;
+
+      sf::CircleShape c1{radius};
+      c1.setFillColor(sf::Color::Red);
+      c1.setOrigin(sf::Vector2f{radius, radius});
+      c1.move(to_window_frame(p1));
+      window1.draw(c1);
+
+      sf::CircleShape c2{radius};
+      c2.setFillColor(sf::Color::Green);
+      c2.setOrigin(sf::Vector2f{radius, radius});
+      c2.move(to_window_frame(p2));
+      window1.draw(c2);
+
+      sf::CircleShape c3{radius};
+      c3.setFillColor(sf::Color::Blue);
+      c3.setOrigin(sf::Vector2f{radius, radius});
+      c3.move(to_window_frame(p3));
+      window1.draw(c3);
+
       /*for (auto const &p : pointsS) {
         constexpr auto radius = 1.f;
         sf::CircleShape c1{radius};
