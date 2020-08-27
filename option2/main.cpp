@@ -29,7 +29,7 @@ int main() {
   constexpr double point_min_y = 0;
   constexpr double point_max_y = dim * dim;
 
-  // create the window
+  // create the window whit the dynamic graph
   sf::ContextSettings settings;
   settings.antialiasingLevel = 8;
 
@@ -71,7 +71,7 @@ int main() {
       window1.draw(zero);
     }
 
-    for (int i = 0; i != d; ++i) {
+    for (int i = 0; i != d; ++i) { //valutare se modificare il valore d oppure impostare un while o un break se raggiunto I_value=0
         int S_value = count_S(board);
         int I_value = count_I(board);
         int R_value = count_R(board);
