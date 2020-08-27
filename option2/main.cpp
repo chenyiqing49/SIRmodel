@@ -95,37 +95,15 @@ int main() {
       board = evolve(board);
       display.draw(board);
 
-      constexpr auto radius = 1.f;
-            
-      sf::CircleShape c1{radius};
-      c1.setFillColor(sf::Color::Red);
-      c1.setOrigin(sf::Vector2f{radius, radius});
-      c1.move(to_window_frame(p1));
-      window1.draw(c1);
-          
-      sf::CircleShape c2{radius};
-      c2.setFillColor(sf::Color::Green);
-      c2.setOrigin(sf::Vector2f{radius, radius});
-      c2.move(to_window_frame(p2));
-      window1.draw(c2);
-        
-      sf::CircleShape c3{radius};
-      c3.setFillColor(sf::Color::Blue);
-      c3.setOrigin(sf::Vector2f{radius, radius});
-      c3.move(to_window_frame(p3));
-      window1.draw(c3);
-  
-     /*
       for (auto const &p : pointsS) {
-             constexpr auto radius = 1.f;
-             sf::CircleShape c1{radius};
-             c1.setFillColor(sf::Color::Green);
-             c1.setOrigin(sf::Vector2f{radius, radius});
-             c1.move(to_window_frame(p));
-             window1.draw(c1);
-           }
-      
-      
+        constexpr auto radius = 1.f;
+        sf::CircleShape c1{radius};
+        c1.setFillColor(sf::Color::Red);
+        c1.setOrigin(sf::Vector2f{radius, radius});
+        c1.move(to_window_frame(p));
+        window1.draw(c1);
+      }
+
       for (auto const &p : pointsI) {
         constexpr auto radius = 1.f;
         sf::CircleShape c2{radius};
@@ -142,7 +120,7 @@ int main() {
         c3.setOrigin(sf::Vector2f{radius, radius});
         c3.move(to_window_frame(p));
         window1.draw(c3);
-      }*/
+      }
 
       window1.display();
       std::this_thread::sleep_for(std::chrono::milliseconds(30));
