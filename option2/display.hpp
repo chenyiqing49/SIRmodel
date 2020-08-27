@@ -29,6 +29,7 @@ public:
   
   int getCellSize() const { return s_cell_size; }
 
+    //return coordinate of mouse if clicked
   Point getMousePosition() {
     Point p{};
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
@@ -40,6 +41,7 @@ public:
     }
   }
 
+    //draw the board: rects of different colors
   void draw(Board const &board) {
     assert(m_board_side == board.size());
 
