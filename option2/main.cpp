@@ -54,9 +54,9 @@ int main() {
   if (window1.isOpen()) {
     window1.clear(sf::Color::Black);
 
-    std::vector<SIR::Point> pointsS{};
-    std::vector<SIR::Point> pointsI{};
-    std::vector<SIR::Point> pointsR{};
+    //-- std::vector<SIR::Point> pointsS{};
+    //-- std::vector<SIR::Point> pointsI{};
+    //-- std::vector<SIR::Point> pointsR{};
 
     {
         //set the origin
@@ -76,23 +76,25 @@ int main() {
         int I_value = count_I(board);
         int R_value = count_R(board);
         
+        //print S, I, and R values on user's console
       std::cout << "\033c";
       std::cout << "S: " << S_value << '\n'
                 << "I: " << I_value << '\n'
                 << "R: " << R_value << '\n';
 
       SIR::Point p1{i, S_value};
-      pointsS.push_back(p1);
+     //-- pointsS.push_back(p1);
 
       SIR::Point p2{i, I_value};
-      pointsI.push_back(p2);
+     //-- pointsI.push_back(p2);
 
       SIR::Point p3{i, R_value};
-      pointsR.push_back(p3);
+     //-- pointsR.push_back(p3);
 
       board = evolve(board);
       display.draw(board);
 
+        //draw points on graph window
       constexpr auto radius = 1.f;
 
       sf::CircleShape c1{radius};
@@ -112,33 +114,6 @@ int main() {
       c3.setOrigin(sf::Vector2f{radius, radius});
       c3.move(to_window_frame(p3));
       window1.draw(c3);
-
-      /*for (auto const &p : pointsS) {
-        constexpr auto radius = 1.f;
-        sf::CircleShape c1{radius};
-        c1.setFillColor(sf::Color::Red);
-        c1.setOrigin(sf::Vector2f{radius, radius});
-        c1.move(to_window_frame(p));
-        window1.draw(c1);
-      }
-
-      for (auto const &p : pointsI) {
-        constexpr auto radius = 1.f;
-        sf::CircleShape c2{radius};
-        c2.setFillColor(sf::Color::Green);
-        c2.setOrigin(sf::Vector2f{radius, radius});
-        c2.move(to_window_frame(p));
-        window1.draw(c2);
-      }
-
-      for (auto const &p : pointsR) {
-        constexpr auto radius = 1.f;
-        sf::CircleShape c3{radius};
-        c3.setFillColor(sf::Color::Blue);
-        c3.setOrigin(sf::Vector2f{radius, radius});
-        c3.move(to_window_frame(p));
-        window1.draw(c3);
-      }*/
 
       window1.display();
       std::this_thread::sleep_for(std::chrono::milliseconds(30));
