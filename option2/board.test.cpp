@@ -14,7 +14,7 @@ TEST_CASE("Testing Board") {
   CHECK(board(0, 1) != board(1, 0));
   CHECK(board(1, 0) != board(0, 1));
 
-  CHECK_NOTHROW(board(0, 1).infect());
+  CHECK_NOTHROW(board(0, 1).infectSure());
   CHECK_NOTHROW(board(0, 1).update());
   CHECK_NOTHROW(evolve(board));
 }
