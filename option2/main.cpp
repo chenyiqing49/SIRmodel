@@ -76,6 +76,9 @@ int main() {
         int I_value = count_I(board);
         int R_value = count_R(board);
         
+        if (I_value == 0){
+            break;
+        }else{
         //print S, I, and R values on user's console
       std::cout << "\033c";
       std::cout << "S: " << S_value << '\n'
@@ -117,6 +120,7 @@ int main() {
 
       window1.display();
       std::this_thread::sleep_for(std::chrono::milliseconds(30));
+        }
     }
     sf::Event event;
     while (window1.waitEvent(event)) {
