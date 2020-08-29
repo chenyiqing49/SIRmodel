@@ -20,28 +20,25 @@ class Display {
   static constexpr auto s_window_title = "SIR";
 
 public:
-
   Display(int board_side)
       : m_board_side{board_side}, m_window{
                                       sf::VideoMode(display_side(board_side),
                                                     display_side(board_side)),
-                                      s_window_title, sf::Style::Close} {}  
-  
+                                      s_window_title, sf::Style::Close} {}
+
   int getCellSize() const { return s_cell_size; }
 
-    //return coordinate of mouse if clicked
   Point getMousePosition() {
     Point p{};
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
       p.x = sf::Mouse::getPosition(m_window).x;
       p.y = sf::Mouse::getPosition(m_window).y;
       return p;
     } else {
-      return p; //controllare: se omesso questo else la compilazione ha un warning perchè la funzione può ritornare void anzichè point. Se scritto così però se si preme con il mouse fuori dalla finestra, il programma crasha
+      return p;
     }
   }
 
-    //draw the board: rects of different colors
   void draw(Board const &board) {
     assert(m_board_side == board.size());
 
@@ -78,13 +75,23 @@ public:
 
   bool wait_key() {
     sf::Event event;
-
     m_window.waitEvent(event);
-    if(event.type != sf::Event::KeyPressed){
+
+    if (event.type != sf::Event::KeyPressed) {
       m_window.waitEvent(event);
       return true;
-    } else {
-      return false;
+    }
+
+    return false;
+  }
+
+  void wait_event() {
+    sf::Event event;
+    while (m_window.waitEvent(event)) {
+      if (event.type == sf::Event::Closed) {
+        m_window.close();
+        break;
+      }
     }
   }
 };
