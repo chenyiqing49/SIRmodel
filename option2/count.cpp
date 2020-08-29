@@ -4,7 +4,7 @@
 // is_S() is_I() is_R() are defined in person.hpp
 
 int count_S(SIR::Board const &board) {
-  int S =0;
+  int S = 0;
   for (int i = 0; i != board.size(); ++i) {
     for (int j = 0; j != board.size(); ++j) {
       if (board(i, j).is_S()) {
