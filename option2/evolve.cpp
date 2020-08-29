@@ -1,3 +1,4 @@
+// this function count how many rows and columns the (r, c) cell has in his neighborhood
 int neigh_count(SIR::Board const &board, int const r, int const c) {
   int result = -static_cast<int>(board(r, c).getState());
   for (int i = r - 1; i != r + 2; ++i) {
@@ -8,6 +9,7 @@ int neigh_count(SIR::Board const &board, int const r, int const c) {
   return result;
 }
 
+// this function tells the board how to evolve
 SIR::Board evolve(SIR::Board const &current) {
   int const N = current.size();
   SIR::Board next{N};
