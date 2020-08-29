@@ -6,14 +6,11 @@
 
 int main() {
   // Costant's values
-  constexpr double beta = 0.00035; // probabilità di contagio   ] 0,1 [
-  constexpr double gamma = 0.12;   // probabilità di guarigione   ] 0,1 [
-  constexpr int N = 1000;
-  constexpr int day = 60;
-  constexpr double I = 100.;
-    
-  //std::cout << "Immettere i valori di Beta, Gamma e il numero iniziale di infetti" << "\n";
-  //std::cin >> double beta >> double gamma >> double I;
+  constexpr double beta = 0.00035; // probability of infection
+  constexpr double gamma = 0.12;   // probability of recovery
+  constexpr int N = 1000;          // number of people
+  constexpr int day = 60;          // period of epidemy
+  constexpr double I = 100.;       // number of infectious
 
   // Create a new epidemy
   SIR s0{};
