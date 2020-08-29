@@ -72,11 +72,13 @@ int main() {
       zero.move(to_window_frame({0, 0}));
       window1.draw(zero);
     }
-
+    
+    // vector that contains S and R values
     std::vector<int> s{N};
     std::vector<int> r{0};
 
     for (int i = 0; i != d; ++i) {
+      // search the previous value
       int const &prevS = s.back();
       int const &prevR = r.back();
 
@@ -89,7 +91,9 @@ int main() {
       } else {
         s.push_back(countS);
         r.push_back(countR);
-
+        
+        // throwgh the formulas of the SIR model we obtain
+        // the values of beta, gamma and R_0
         double b_num = static_cast<double>(prevS - countS);
         double b_den = static_cast<double>(countS * countI);
         double beta = b_num / b_den;
@@ -97,10 +101,10 @@ int main() {
         double g_num = static_cast<double>(countR - prevR);
         double g_den = static_cast<double>(countI);
         double gamma = g_num / g_den;
-
+        
         double R_0 = N * (beta / gamma);
 
-        // print S, I, and R values on user's console
+        // print S, I, R, beta, gamma and R_0 values on user's console
         std::cout << "\033c";
         std::cout << "S: " << countS << '\n'
                   << "I: " << countI << '\n'
@@ -108,7 +112,8 @@ int main() {
                   << "BETA: " << beta << '\n'
                   << "GAMMA: " << gamma << '\n'
                   << "R_0: " << R_0 << '\n';
-
+        
+        // define three points
         SIR::Point p1{i, countS};
         SIR::Point p2{i, countI};
         SIR::Point p3{i, countR};
