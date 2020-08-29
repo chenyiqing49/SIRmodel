@@ -14,7 +14,7 @@
 \usepackage{array}
 \usepackage {quoting}
 \usepackage{subfig}
-
+\usepackage[colorlinks]{hyperref}
 % Per creare un "blocco" codice
 \usepackage{xcolor}
 \usepackage{listings}
@@ -54,9 +54,12 @@
 \date{A.A. 2019-2020}
 
 \begin{document}
+
 \maketitle 
-
-
+\begin{center}
+\url{https://github.com/samuelelanzi/SIRmode}
+\end{center}
+\
 \begin{abstract}
  Il nostro programma si sviluppa in due modalità:
  \begin{itemize}
@@ -79,12 +82,12 @@ $$
 $$
 R_i = R_{i - 1} + \gamma I_{i - 1}
 $$
-$\beta$ indica la probabilità di contagio ed è compresa tra 0 e 1 e $\gamma$ indica la probabilità di guarigione, anch'essa compresa tra 0 e 1.
+$\beta$ indica la densità di probabilità dei contagi ($\beta = \frac{2\cdot \beta_0}{N-1}$ detta con $\beta_0$ la probabilità che ha un individuo di essere contagiato incontrandone un altro) e $\gamma$ indica la probabilità di guarigione, compresa tra 0 e 1.
 \ \\
 Il nostro programma utilizza queste formule per calcolare i valori di S, I e R per ogni giorno i-esimo (si veda  \textbf{\textit{sir.cpp}}).
 \ \\
 %All'avvio del programma, all'utente sarà chiesto di fornire tramite standard input i valori di beta, gamma e infetti iniziali - dati caratteristici della situazione da simulare. 
-La durata della simulazione (60 giorni) e il numero totale della popolazione (1000 unità) sono già definiti al compile time. Anche i parametri $\beta$ e $\gamma$ vengono definiti dal programmatore, di default abbiamo assegnato $\beta = 0.0035$ e $\gamma = 0.12$ \footnote{per questi valori abbiamo fatto rifermento a quelli citati dai professori Lamberti, Cifra e Marone del Dipartimento di Matematica dell'Università Sapienza di Roma (https://www1.mat.uniroma1.it/people/pensionati/lamberti/lauree/sir.pdf)} (si veda il \textbf{\textit{main.cpp}})
+La durata della simulazione (60 giorni) e il numero totale della popolazione (1000 unità) sono già definiti al compile time. Anche i parametri $\beta$ e $\gamma$ vengono definiti dal programmatore, di default abbiamo assegnato $\beta = 0.0035$ e $\gamma = 0.12$ \footnote{per questi valori abbiamo fatto rifermento a quelli citati dai professori Lamberti, Cifra e Marone del Dipartimento di Matematica dell'Università Sapienza di Roma (\url{https://www1.mat.uniroma1.it/people/pensionati/lamberti/lauree/sir.pdf})} (si veda il \textbf{\textit{main.cpp}})
 \\ 
 Con questi valori il programma riesce a calcolare i valori di S, I e R di ciascun giorno (si veda  \textbf{\textit{sir.cpp}}) e stamparli come standard output (si veda  \textbf{\textit{print.cpp}}), inoltre in \textbf{\textit{main.cpp}} viene creata una finestra con l'ausilio della libreria SFML, vengono creati tre vettori che contengono le coordinate dei valori di S, I e R in funzione dei giorni trascorsi e i punti vengono stampati in un piano cartesiano su questa finestra.
 
@@ -92,7 +95,7 @@ Con questi valori il programma riesce a calcolare i valori di S, I e R di ciascu
 \subsection{Modalità 2}
 Questa modalità prevede di osservare in via grafica l'andamento del contagio in una griglia bidimensionale composta da 256 celle per lato. Ogni cella rappresenta un individuo e può essere di stato S, I o R. Gli individui infetti hanno una certa probabilità di contagiare le celle vicine di stato suscettibile e rimangono infetti per un certo lasso di tempo distribuito uniformemente tra 14 e 20 giorni (si faccia riferimento a \textbf{\textit{person.hpp}}). Definito l'oggetto \verb!Person! e inizializzato come \verb!Susceptible!, in \textbf{\textit{board.hpp}} viene creata la griglia \verb!Board! come vettore di tipo  \verb!Person!. A questo punto il \textbf{\textit{main.cpp}} può, con l'aiuto di SFML, riempire una finestra con una griglia piena di celle. Visivamente (si veda  \textbf{\textit{display.hpp}}) le \verb!Person! di stato \verb!Susceptible! vengono colorate di rosso, le \verb!Person! di stato \verb!Infectious! vengono colorate di verde e quelle di stato \verb!Recovered! di blu.
 \ \\
-All'avvio del programma l'utente con il mouse dovrà premere su ogni cella che vuole considerare infetta allo stato iniziale e quindi si colorerà di verde. Raggiunto lo stato iniziale desiderato, l'utente darà inizio alla simulazione dei contagi premendo un qualsiasi tasto sulla tastiera. Il \textbf{\textit{main.cpp}} stamperà su terminale il conteggio corrente dello stato delle celle (calcolato in \textbf{\textit{count.cpp}}) aggiornandolo ad ogni ciclo; con questi valori un'altra finestra SFML terrà traccia dell'andamento di S(t), I(t) e R(t) e li graficherà simultaneamente (si vedano le righe 33-116 di \textbf{\textit{main.cpp}}) . Anche la \verb!Board! (e di conseguenza la schermata grafica) si aggiornerà tenendo conto dei contagi. La situazione dei contagi e l'evoluzione delle celle è definita in \textbf{\textit{evolve.cpp}}.
+All'avvio del programma l'utente con il mouse dovrà premere su ogni cella che vuole considerare infetta allo stato iniziale e quindi si colorerà di verde. Raggiunto lo stato iniziale desiderato, l'utente darà inizio alla simulazione dei contagi premendo un qualsiasi tasto sulla tastiera. Il \textbf{\textit{main.cpp}} stamperà su terminale il conteggio corrente dello stato delle celle (calcolato in \textbf{\textit{count.cpp}}) aggiornandolo ad ogni ciclo e i valori di $\beta$, $\gamma$ e $R_0$ caratteristici; con questi valori un'altra finestra SFML terrà traccia dell'andamento di S(t), I(t) e R(t) e li graficherà simultaneamente (si vedano le righe 33-116 di \textbf{\textit{main.cpp}}) . Anche la \verb!Board! (e di conseguenza la schermata grafica) si aggiornerà tenendo conto dei contagi. La situazione dei contagi e l'evoluzione delle celle è definita in \textbf{\textit{evolve.cpp}}.
 
 \section{Istruzioni di compilazione e esecuzione}
 
@@ -128,7 +131,7 @@ oppure con l'esecuzione del programma tramite il comando
 Eseguendo la prima modalità del programma, verranno mostrati in output del terminale tramite uno  \verb! std::cout ! i valori di S, I e R per ogni giorno di simulazione [Figura 1 (a)]; inoltre, grazie alla libreria SFML, verrà aperto un grafico che rappresenta tali valori in funzione dei giorni trascorsi. Si vedranno quindi dei punti rossi che rappresentano il numero di persone suscettibili per giorno, dei punti blu che rappresentano i non suscettibili per giorno e dei punti verdi che rappresentano quanti sono infetti in quel giorno [Figura 1 (b)]. Si può notare che il risultato è coerente con il modello SIR atteso (si veda Scelte progettuali e implementative).
 
 
-\begin{figure}
+\begin{figure}[t]
 \centering
 \subfloat[][\emph{output tramite finestra grafica SFML}]
 {\includegraphics[width=.60\textwidth]{Figura_1.png}} \quad \subfloat[][\emph{standard output da terminale}]
@@ -144,11 +147,14 @@ Eseguendo la seconda modalità del programma, dopo aver scelto le celle infette 
 
 Il programmatore, prima della compilazione, stabilisce un valore di contagiosità \verb!constexpr int probabilityToInfect! (tra 0 e 100) in \textbf{\textit{person.hpp, line 9}}. Utilizzando valori differenti si vede come può evolvere l'epidemia: inserendo un'alta probabilità di contagio l'epidemia procederà rapidamente e in pochi giorni gran parte della popolazione risulterà infetta, al contrario inserendo una probabilità molto bassa si vede che l'epidemia rallenta fino a cessare prima di infettare molte celle.
 
-\begin{figure}
+
+Una verifica ulteriore della correttezza dei risultati della situazione simulata è il confronto dei valori di $\beta$, $\gamma$ e $R_0$ stampati su terminale con quelli calcolati per via teorica utilizzando le formule del modello SIR \footnote{Si veda \textit{Cifra, Lamberti, Marone: SIR, un modello matematico di epidemie} (\url{https://www1.mat.uniroma1.it/people/pensionati/lamberti/lauree/sir.pdf})}. Entro le incertezze statistiche date da fluttuazioni casuali, essi sono compatibili.
+
+\begin{figure}[h]
 \centering
 \subfloat[][\emph{griglia 256x256 rappresentante la situazione di ogni individuo}]
-{\includegraphics[width=.45\textwidth]{Figura_3.png}} \quad \subfloat[][\emph{grafico della situazione di contagio secondo il modello attuale}]
-{\includegraphics[width=.45\textwidth]{Figura_4.png}} \\
+{\includegraphics[width=.55\textwidth]{Figura_3.png}} \quad \subfloat[][\emph{grafico della situazione di contagio secondo il modello attuale}]
+{\includegraphics[width=.34\textwidth]{Figura_4.png}} \\
 \caption{}
 \label{fig:subfig}
 \end{figure}
