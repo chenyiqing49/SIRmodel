@@ -117,7 +117,7 @@ int main() {
         display.draw(board);
 
         // draw points on graph window
-        constexpr auto radius = 1.f;
+        constexpr auto radius = 2.f;
 
         sf::CircleShape c1{radius};
         c1.setFillColor(sf::Color::Red);
