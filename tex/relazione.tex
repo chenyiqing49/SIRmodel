@@ -57,7 +57,7 @@
 
 \maketitle 
 \begin{center}
-\url{https://github.com/samuelelanzi/SIRmode}
+\url{https://github.com/samuelelanzi/SIRmodel}
 \end{center}
 \
 \begin{abstract}
@@ -160,15 +160,17 @@ Una verifica ulteriore della correttezza dei risultati della situazione simulata
 \end{figure}
 
 \section{Test e condizioni per la corretta esecuzione}
-....
+\subsection{Modalità 1}
+Questa modalità per funzionare correttamente necessita di valori logicamente accettabili per i valori di $\gamma$ e $\beta$ ovvero entrambe le variabili devono assumere valori strettamente maggiori di 0: per accertarci di ciò abbiamo imposto questi \verb!assert! in \textbf{\textit{sir.cpp}}. Anche la durata in giorni della simulazione devono essere un numero positivo, pertanto abbiamo impostato anche questo \verb!assert! in \textbf{\textit{sir.cpp}}. Inoltre per stampare i punti del grafico, il programma legge i valori nei tre \verb!std::vector<Point>! dichiarati in \textbf{\textit{main.cpp}}, è necessario che questi  \verb!std::vector! contengano elementi, dunque abbiamo impostato tre  \verb!assert! che impongono la  \verb!size()! di ciascuno maggiore di zero.
 \ \\
-....
 \ \\
-...includi in questa sezione i test, gli assert e try 
-\ \\
-.....
-\ \\
-...
-\ \\
-....
+Abbiamo incluso dei test che possono essere eseguiti per verificare:
+\begin{itemize}\item La corretta implementazione della \verb!struct Point!, controllando che alcuni punti che ci aspettiamo essere uguali lo siano effettivamente e in modo analogo punti differenti siano diversi (si veda  \textbf{\textit{point.test.cpp}}).
+\item Il corretto funzionamento di \verb!create_model()!, controllando che non generi errori passando alcuni parametri iniziali casuali (si veda \textbf{\textit{sir.test.cpp}}).
+ \end{itemize}
+
+\subsection{Modalità 2}
+
+...test e assert della modalità 2
+
 \end{document}
