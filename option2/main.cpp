@@ -8,15 +8,21 @@
 
 int main() {
   constexpr int dim = 256;
+  const int N = dim * dim;
+
   SIR::Board board{dim};
   SIR::Display display{dim};
 
-    //Infect cells clicked by mouse
-  while (display.wait_key()) {
+  std::cout << "Insert infect cells with mouse's left button...\n";
+  std::cout << "Press any key to start the animation\n";
+
+  // Infect cells clicked by mouse
+  while (display.wait_key() == true) {
+    int const c_size = display.getCellSize();
     display.draw(board);
     auto p1 = display.getMousePosition();
-    int X = p1.x / display.getCellSize();
-    int Y = p1.y / display.getCellSize();
+    int X = p1.x / c_size;
+    int Y = p1.y / c_size;
     board(Y, X).infectSure();
   }
 
@@ -54,12 +60,8 @@ int main() {
   if (window1.isOpen()) {
     window1.clear(sf::Color::Black);
 
-    //-- std::vector<SIR::Point> pointsS{};
-    //-- std::vector<SIR::Point> pointsI{};
-    //-- std::vector<SIR::Point> pointsR{};
-
     {
-        //set the origin
+      // set the origin
       constexpr auto radius_O = 5.f;
       constexpr auto outline_thickness = 2.f;
       sf::CircleShape zero{radius_O};
@@ -71,56 +73,73 @@ int main() {
       window1.draw(zero);
     }
 
-    for (int i = 0; i != d; ++i) { //valutare se modificare il valore d oppure impostare un while o un break se raggiunto I_value=0
-        int S_value = count_S(board);
-        int I_value = count_I(board);
-        int R_value = count_R(board);
-        
-        if (I_value == 0){
-            break;
-        }else{
-        //print S, I, and R values on user's console
-      std::cout << "\033c";
-      std::cout << "S: " << S_value << '\n'
-                << "I: " << I_value << '\n'
-                << "R: " << R_value << '\n';
+    std::vector<int> s{N};
+    std::vector<int> r{0};
 
-      SIR::Point p1{i, S_value};
-     //-- pointsS.push_back(p1);
+    for (int i = 0; i != d; ++i) {
+      int const &prevS = s.back();
+      int const &prevR = r.back();
 
-      SIR::Point p2{i, I_value};
-     //-- pointsI.push_back(p2);
+      int countS = count_S(board);
+      int countI = count_I(board);
+      int countR = count_R(board);
 
-      SIR::Point p3{i, R_value};
-     //-- pointsR.push_back(p3);
+      if (countI == 0) {
+        break;
+      } else {
+        s.push_back(countS);
+        r.push_back(countR);
 
-      board = evolve(board);
-      display.draw(board);
+        double b_num = static_cast<double>(prevS - countS);
+        double b_den = static_cast<double>(countS * countI);
+        double beta = b_num / b_den;
 
-        //draw points on graph window
-      constexpr auto radius = 1.f;
+        double g_num = static_cast<double>(countR - prevR);
+        double g_den = static_cast<double>(countI);
+        double gamma = g_num / g_den;
 
-      sf::CircleShape c1{radius};
-      c1.setFillColor(sf::Color::Red);
-      c1.setOrigin(sf::Vector2f{radius, radius});
-      c1.move(to_window_frame(p1));
-      window1.draw(c1);
+        double R_0 = N * (beta / gamma);
 
-      sf::CircleShape c2{radius};
-      c2.setFillColor(sf::Color::Green);
-      c2.setOrigin(sf::Vector2f{radius, radius});
-      c2.move(to_window_frame(p2));
-      window1.draw(c2);
+        // print S, I, and R values on user's console
+        std::cout << "\033c";
+        std::cout << "S: " << countS << '\n'
+                  << "I: " << countI << '\n'
+                  << "R: " << countR << '\n'
+                  << "BETA: " << beta << '\n'
+                  << "GAMMA: " << gamma << '\n'
+                  << "R_0: " << R_0 << '\n';
 
-      sf::CircleShape c3{radius};
-      c3.setFillColor(sf::Color::Blue);
-      c3.setOrigin(sf::Vector2f{radius, radius});
-      c3.move(to_window_frame(p3));
-      window1.draw(c3);
+        SIR::Point p1{i, countS};
+        SIR::Point p2{i, countI};
+        SIR::Point p3{i, countR};
 
-      window1.display();
-      std::this_thread::sleep_for(std::chrono::milliseconds(30));
-        }
+        board = evolve(board);
+        display.draw(board);
+
+        // draw points on graph window
+        constexpr auto radius = 1.f;
+
+        sf::CircleShape c1{radius};
+        c1.setFillColor(sf::Color::Red);
+        c1.setOrigin(sf::Vector2f{radius, radius});
+        c1.move(to_window_frame(p1));
+        window1.draw(c1);
+
+        sf::CircleShape c2{radius};
+        c2.setFillColor(sf::Color::Green);
+        c2.setOrigin(sf::Vector2f{radius, radius});
+        c2.move(to_window_frame(p2));
+        window1.draw(c2);
+
+        sf::CircleShape c3{radius};
+        c3.setFillColor(sf::Color::Blue);
+        c3.setOrigin(sf::Vector2f{radius, radius});
+        c3.move(to_window_frame(p3));
+        window1.draw(c3);
+
+        window1.display();
+        std::this_thread::sleep_for(std::chrono::milliseconds(30));
+      }
     }
     sf::Event event;
     while (window1.waitEvent(event)) {
@@ -129,5 +148,6 @@ int main() {
         break;
       }
     }
+    display.wait_event();
   }
 }
