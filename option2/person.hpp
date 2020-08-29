@@ -1,13 +1,11 @@
 #ifndef SIR_PERSON_HPP
 #define SIR_PERSON_HPP
 
-#include <random>
 #include <cassert>
+#include <random>
 
 namespace SIR {
 enum class State { Susceptible, Infectious, Recovered };
-constexpr int probabilityToInfect = 50;
-//assert (probabilityToInfect >= 0 && probabilityToInfect <= 100);
 
 class Person {
 private:
@@ -30,30 +28,33 @@ public:
   }
 
   void infect() {
+    constexpr int probabilityToInfect = 100;
+
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(14, 20);
     int days = distrib(gen);
-      
+
     std::uniform_int_distribution<> distrib2(0, 100);
     int chance = distrib2(gen);
 
-    if ((state_ == State::Susceptible)&&(chance <= probabilityToInfect)) {
+    if (state_ == State::Susceptible && chance <= probabilityToInfect) {
       days_ = days;
       state_ = State::Infectious;
     }
   }
-    void infectSure() {
-      std::random_device rd;
-      std::mt19937 gen(rd());
-      std::uniform_int_distribution<> distrib(14, 20);
-      int days = distrib(gen);
 
-      if (state_ == State::Susceptible) {
-        days_ = days;
-        state_ = State::Infectious;
-      }
+  void infectSure() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(14, 20);
+    int days = distrib(gen);
+
+    if (state_ == State::Susceptible) {
+      days_ = days;
+      state_ = State::Infectious;
     }
+  }
 
   bool is_S() const { return state_ == State::Susceptible; }
 
