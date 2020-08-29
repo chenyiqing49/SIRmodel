@@ -1,8 +1,7 @@
 #include "board.hpp"
 
-//count S, I and R all over the board: double for loop (rows and columns)
+// count S, I and R all over the board: double for loop (rows and columns)
 // is_S() is_I() is_R() are defined in person.hpp
-
 int count_S(SIR::Board const &board) {
   int S = 0;
   for (int i = 0; i != board.size(); ++i) {
