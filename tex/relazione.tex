@@ -116,19 +116,19 @@ All'avvio del programma l'utente con il mouse dovrà premere su ogni cella che v
   $$
   $$
     \Rightarrow \Delta I > 0 \Leftrightarrow S_0 > \frac{\gamma}{\beta}
-  $$ il che significa che l'epidemia si propaghera'. Al contrario se $S_0 < \frac{\gamma}{\beta}$
-  l'epidemia si estinguera'. Il rapporto $\frac{\beta}{\gamma}$ assume dunque un valore di soglia per l'epidemia
+  $$ il che significa che l'epidemia si propagherà. Al contrario se $S_0 < \frac{\gamma}{\beta}$
+  l'epidemia si estinguerà. Il rapporto $\frac{\beta}{\gamma}$ assume dunque un valore di soglia per l'epidemia
   stessa. Scriviamo (tenendo presente che $S_0 = N$):
   $$
     R_0 = \frac{\beta}{\gamma} N 
   $$
-}; con questi valori un'altra finestra SFML terrà traccia dell'andamento di S(t), I(t) e R(t) e li graficherà simultaneamente (si vedano le righe 33-116 di \textbf{\textit{main.cpp}}) . Anche la \verb!Board! (e di conseguenza la schermata grafica) si aggiornerà tenendo conto dei contagi. La situazione dei contagi e l'evoluzione delle celle è definita in \textbf{\textit{evolve.cpp}}.
+}; con questi valori un'altra finestra SFML terrà traccia dell'andamento di S(t), I(t) e R(t) e li graficherà simultaneamente (si vedano le righe 42-148 di \textbf{\textit{main.cpp}}) . Anche la \verb!Board! (e di conseguenza la schermata grafica) si aggiornerà tenendo conto dei contagi. La situazione dei contagi e l'evoluzione delle celle è definita in \textbf{\textit{evolve.cpp}}.
 
 \section{Istruzioni di compilazione e esecuzione}
 
 
 Per la corretta compilazione del progetto è necessario l'utilizzo di g++ (compilatore del linguaggio C++), la libreria grafica SFML e CMake. 
-Se non si possiede CMake, è necessario installarlo:
+Se non si possiedono, è necessario installarli:
 \begin{lstlisting}
 	sudo apt-get install g++ libsfml-dev cmake
 \end{lstlisting}
