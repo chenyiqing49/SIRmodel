@@ -36,7 +36,7 @@ int main() {
     pointsS.push_back(p1);
   }
   assert(pointsS.size() > 0);
-  
+
   std::vector<Point> pointsI{};
   for (int i = 0; i != day; ++i) {
     Point p2{i, e[i].infectious};
@@ -76,10 +76,10 @@ int main() {
   if (window.isOpen()) {
     window.clear(sf::Color::Black);
 
-    // Define and research font 
+    // Define and research font
     sf::Font font;
     if (!font.loadFromFile("georgia.ttf")) {
-    } 
+    }
 
     // Choose what to write
     sf::Text textS;
