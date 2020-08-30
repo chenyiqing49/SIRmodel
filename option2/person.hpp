@@ -29,8 +29,8 @@ public:
 
   void infect() {
     constexpr int probabilityToInfect = 50;
-      assert(probabilityToInfect>=0);
-      assert(probabilityToInfect<=100);
+    assert(probabilityToInfect >= 0);
+    assert(probabilityToInfect <= 100);
 
     std::random_device rd;
     std::mt19937 gen(rd());
