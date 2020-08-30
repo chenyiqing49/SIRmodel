@@ -20,9 +20,7 @@ public:
     return (i >= 0 && i < n_ && j >= 0 && j < n_) ? board_[i * n_ + j] : p;
   }
 
-  Person &operator()(int i, int j) {
-    return board_[i * n_ + j];
-  }
+  Person &operator()(int i, int j) { return board_[i * n_ + j]; }
 
   int size() const { return n_; }
 };
