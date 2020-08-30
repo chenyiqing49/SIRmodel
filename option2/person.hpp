@@ -1,8 +1,8 @@
 #ifndef SIR_PERSON_HPP
 #define SIR_PERSON_HPP
 
+#include "random.cpp"
 #include <cassert>
-#include <random>
 
 namespace SIR {
 enum class State { Susceptible, Infectious, Recovered };
@@ -28,17 +28,13 @@ public:
   }
 
   void infect() {
-    constexpr int probabilityToInfect = 50;
-    assert(probabilityToInfect >= 0);
-    assert(probabilityToInfect <= 100);
+    constexpr int probabilityToInfect = 100;
+    static_assert(probabilityToInfect > 0,
+                  "Probability <= 0");
+    static_assert(probabilityToInfect <= 100, "Probability > 100%");
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(14, 20);
-    int days = distrib(gen);
-
-    std::uniform_int_distribution<> distrib2(0, 100);
-    int chance = distrib2(gen);
+    int days = generateRandom(14, 20);
+    int chance = generateRandom(1, 100);
 
     if (state_ == State::Susceptible && chance <= probabilityToInfect) {
       days_ = days;
@@ -47,10 +43,7 @@ public:
   }
 
   void infectSure() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(14, 20);
-    int days = distrib(gen);
+    int days = generateRandom(14, 20);
 
     if (state_ == State::Susceptible) {
       days_ = days;
