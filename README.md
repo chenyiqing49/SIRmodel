@@ -31,7 +31,7 @@ ctest
 ```
 
 > ### RISULTATI
-Compilando il file ![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1) otteniamo il grafico degli andamenti delle funzioni nel tempo S(t) (suscettibili), I(t) (infetti) e R(t) (rimossi):
+Compilando il file ![option1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1) otteniamo il grafico degli andamenti delle funzioni nel tempo S(t) (suscettibili), I(t) (infetti) e R(t) (rimossi):
 
 ![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/tex/images/Figura_1.png)
 ![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/tex/images/Figura_2.png)
