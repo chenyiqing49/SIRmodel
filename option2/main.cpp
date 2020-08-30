@@ -26,7 +26,7 @@ int main() {
     board(Y, X).infectSure();
   }
 
-  constexpr int d = 700;
+  constexpr int d = 1000;
 
   constexpr int window_width = d + 20;
   constexpr int window_height = d + 20;
@@ -86,34 +86,33 @@ int main() {
       int countI = count_I(board);
       int countR = count_R(board);
 
+      s.push_back(countS);
+      r.push_back(countR);
+
+      // through the formulas of the SIR model we obtain
+      // the values of beta, gamma and R_0
+      double b_num = static_cast<double>(prevS - countS);
+      double b_den = static_cast<double>(countS * countI);
+      double beta = b_num / b_den;
+
+      double g_num = static_cast<double>(countR - prevR);
+      double g_den = static_cast<double>(countI);
+      double gamma = g_num / g_den;
+
+      double R_0 = N * (beta / gamma);
+
+      // print S, I, R, beta, gamma and R_0 values on user's console
+      std::cout << "\033c";
+      std::cout << "S: " << countS << '\n'
+                << "I: " << countI << '\n'
+                << "R: " << countR << '\n'
+                << "BETA: " << beta << '\n'
+                << "GAMMA: " << gamma << '\n'
+                << "R_0: " << R_0 << '\n';
+
       if (countI == 0) {
         break;
       } else {
-        s.push_back(countS);
-        r.push_back(countR);
-
-        // through the formulas of the SIR model we obtain
-        // the values of beta, gamma and R_0
-        double b_num = static_cast<double>(prevS - countS);
-        double b_den = static_cast<double>(countS * countI);
-        double beta = b_num / b_den;
-
-        double g_num = static_cast<double>(countR - prevR);
-        double g_den = static_cast<double>(countI);
-        double gamma = g_num / g_den;
-
-        double R_0 = N * (beta / gamma);
-
-        // print S, I, R, beta, gamma and R_0 values on user's console
-        std::cout << "\033c";
-          std::cout << "S: " << countS << '\n'
-                    << "I: " << countI << '\n'
-                    << "R: " << countR << '\n'
-                    << "BETA: " << beta << '\n'
-                    << "GAMMA: " << gamma << '\n'
-                    << "R_0: " << R_0 << '\n';
-        }
-
         // define three points
         SIR::Point p1{i, countS};
         SIR::Point p2{i, countI};
