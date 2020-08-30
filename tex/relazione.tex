@@ -168,7 +168,14 @@ Abbiamo incluso dei test che possono essere eseguiti per verificare:
  \end{itemize}
 
 \subsection{Modalità 2}
+Questa modalità è estremamente versatile e permette di simulare un grandissimo numero di situazioni con condizioni iniziali differenti. L'unico valore modificabile che ha un dominio prestabilito è \verb!probabilityToInfect! che il programma utilizza nella funzione \verb!Infect()!. Questo valore rappresenta la probabilità di contagiarsi che ha un individuo dopo essere entrato a contatto con individui infetti. Trattandosi di una probabilità deve avere un valore compreso tra 0 e 100. Abbiamo quindi aggiunto questi \verb! assert! in \textbf{\textit{person.hpp}}. Un'ulteriore tutela della correttezza del codice si trova in \textbf{\textit{display.cpp}}: imponiamo che la \verb!board.size()! coincida con il valore \verb!m_board_side! che deriva dalla dimensione \verb!int dim! imposta alla griglia in \textbf{\textit{main.cpp}}.
+\ \\
+\ \\
+Anche qui abbiamo incluso dei test che possono essere eseguiti per verificare:
+\begin{itemize}
+\item La corretta implementazione della \verb!struct Point!, controllando che alcuni punti che ci aspettiamo essere uguali lo siano effettivamente e in modo analogo punti differenti siano diversi (si veda  \textbf{\textit{point.test.cpp}}).
+\item Il corretto funzionamento delle coordinate delle celle della \verb! board!. In \textbf{\textit{board.test.cpp}} infatti ci accertiamo dell'uguaglianza dello stato di celle uguali. Poi eseguiamo \verb!infectSure()! a una cella e ci accertiamo che il suo stato sia diverso rispetto ad altre di stato \verb!Susceptible! per default. Infine controlliamo che le funzioni \verb!infectSure()!, \verb!update()! e \verb!evolve()! non generino errori.
+ \end{itemize}
 
-...test e assert della modalità 2
 
 \end{document}
