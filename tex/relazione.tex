@@ -174,7 +174,7 @@ Eseguendo la seconda modalità del programma, dopo aver scelto le celle infette 
 Il programmatore, prima della compilazione, stabilisce un valore di contagiosità \verb!constexpr int probabilityToInfect! (tra 0 e 100) in \textbf{\textit{person.hpp, line 9}}. Utilizzando valori differenti si vede come può evolvere l'epidemia: inserendo un'alta probabilità di contagio l'epidemia procederà rapidamente e in pochi giorni gran parte della popolazione risulterà infetta, al contrario inserendo una probabilità molto bassa si vede che l'epidemia rallenta fino a cessare prima di infettare molte celle.
 
 
-Una verifica ulteriore della correttezza dei risultati della situazione simulata è il confronto dei valori di $\beta$, $\gamma$ e $R_0$ stampati su terminale con quelli calcolati per via teorica utilizzando le formule del modello SIR \footnote{Si veda \textit{Cifra, Lamberti, Marone: SIR, un modello matematico di epidemie} (\url{https://www1.mat.uniroma1.it/people/pensionati/lamberti/lauree/sir.pdf})}. Entro le incertezze statistiche date da fluttuazioni casuali, essi sono compatibili.
+Una verifica ulteriore della correttezza dei risultati della situazione simulata è il confronto dei valori di $\beta$, $\gamma$ e $R_0$ stampati su terminale con quelli calcolati per via teorica utilizzando le formule del modello SIR (4) e (5). Entro le incertezze statistiche date da fluttuazioni casuali, essi sono compatibili.
 
 \begin{figure}[h]
 \centering
