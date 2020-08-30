@@ -4,9 +4,9 @@ Le formule principali sulle quali si basa il modello, utlizzate anche nel nostro
 
 <img src="https://render.githubusercontent.com/render/math?math=S_i = S_{i - 1} - \beta I_{i - 1}S_{i - 1}">
 
-<img src="https://render.githubusercontent.com/render/math?math=I_i = I_{i - 1} + \beta I_{i - 1}S_{i - 1} - \gamma I_{i - 1}">
+<img src="https://render.githubusercontent.com/render/math?math=I_i = I_{i - 1} %2B \beta I_{i - 1}S_{i - 1} - \gamma I_{i - 1}">
 
-<img src="https://render.githubusercontent.com/render/math?math=R_i = R_{i - 1} + \gamma I_{i - 1}">
+<img src="https://render.githubusercontent.com/render/math?math=R_i = R_{i - 1} %2B \gamma I_{i - 1}">
 
 > ### COMPILAZIONE ATTRAVERSO CMAKE
 
