@@ -106,19 +106,12 @@ int main() {
 
         // print S, I, R, beta, gamma and R_0 values on user's console
         std::cout << "\033c";
-        if (gamma != 0) {
           std::cout << "S: " << countS << '\n'
                     << "I: " << countI << '\n'
                     << "R: " << countR << '\n'
                     << "BETA: " << beta << '\n'
                     << "GAMMA: " << gamma << '\n'
                     << "R_0: " << R_0 << '\n';
-        } else {
-          std::cout << "S: " << countS << '\n'
-                    << "I: " << countI << '\n'
-                    << "R: " << countR << '\n'
-                    << "BETA: " << beta << '\n'
-                    << "GAMMA: " << gamma << '\n';
         }
 
         // define three points
