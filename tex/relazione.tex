@@ -50,7 +50,6 @@
 \date{A.A. 2019-2020}
 
 \begin{document}
-
 \maketitle 
 
 \begin{center}
@@ -60,8 +59,15 @@
 \begin{abstract}
  Il nostro programma si sviluppa in due modalità:
  \begin{itemize}
-	  \item[Modalità 1] Permette di ottenere l'andamento di persone suscettibili, infetti e rimossi in un'epidemia in funzione del tempo. Utilizza come input i valori di $\beta$ e $\gamma$ (valori caratteristici di ogni epidemia) e presenta in output i valori di suscettibili, infetti e rimossi per ogni giorno (vengono simulati 60 giorni, partendo da una situazione di 100 infetti su una popolazione di 1000 unità); i valori in output vengono presentati sia in tabella che in un grafico.
-    \item[Modalità 2] Permette di visualizzare in una griglia grafica lo stato di ciascuna unità durante il corso di una epidemia, allo stesso tempo viene stampato il grafico delle curve di suscettibili, infetti e guariti in funzione del tempo nell'epidemia simulata. In input si assegnano le celle da ritenere infette all'origine con click del mouse sulle celle. In output, la situazione dell'epidemia in aggiornamento per ogni giorno fino al termine del contagio.
+    \item[Modalità 1] Permette di ottenere l'andamento di persone suscettibili (S), infetti (I) e rimossi (R) in un'epidemia in funzione del tempo. 
+    Utilizza come input i valori di $\beta$ e $\gamma$ (valori caratteristici di ogni epidemia) e presenta in output i valori di S, I e R per ogni giorno 
+    (vengono simulati 60 giorni, partendo da una situazione di 100 infetti su una popolazione di 1000 unità); 
+    i valori in output vengono presentati sia in tabella che in un grafico.
+
+    \item[Modalità 2] Permette di visualizzare in una griglia grafica lo stato di ciascuna unità durante il corso di una epidemia, 
+    allo stesso tempo viene stampato il grafico delle curve di suscettibili, infetti e guariti in funzione del tempo nell'epidemia simulata. 
+    In input si assegnano le celle da ritenere infette all'origine con click del mouse sulle celle.
+    In output, la situazione dell'epidemia in aggiornamento per ogni giorno fino al termine del contagio.
   \end{itemize}
 \end{abstract}
 
@@ -70,37 +76,58 @@
 \section{Scelte progettuali e implementative} 
 \subsection{Modalità 1}
 Il modello SIR è un modello matematico che descrive l'evoluzione di una epidemia. L'andamento di S, I, R è descritto dalle seguenti formule:
-$$
-S_i = S_{i - 1} - \beta I_{i - 1}S_{i - 1} 
-$$
-$$
-I_i = I_{i - 1} + \beta I_{i - 1}S_{i - 1} - \gamma I_{i - 1}
-$$
-$$
-R_i = R_{i - 1} + \gamma I_{i - 1}
-$$ $\beta$ indica la densità di probabilità dei contagi ($\beta = \frac{2\cdot \beta_0}{N-1}$ detta con $\beta_0$ la probabilità che ha un individuo di essere contagiato incontrandone un altro) e $\gamma$ indica la probabilità di guarigione, compresa tra 0 e 1.
+\begin{equation}
+  S_i = S_{i - 1} - \beta I_{i - 1}S_{i - 1} 
+\end{equation}
+\begin{equation}
+  I_i = I_{i - 1} + \beta I_{i - 1}S_{i - 1} - \gamma I_{i - 1}
+\end{equation}
+\begin{equation}
+  R_i = R_{i - 1} + \gamma I_{i - 1}
+\end{equation} Come possiamo notare sono presenti due costanti caratteristiche dell'epidemia: $\beta$ indica la densità di probabilità dei contagi 
+\begin{equation}
+  \beta = \frac{2\cdot \beta_0}{N-1}
+\end{equation}
+dove con $\beta_0$ indichiamo la probabilità che ha un individuo di essere contagiato incontrandone un altro e con N il numero di individui. 
+$\gamma$ indica la probabilità di guarigione, 
+\begin{equation}
+  \gamma = \frac{1}{T}
+\end{equation} dove T rappresenta il periodo di guarigione espresso in giorni.
+
 \ 
 \\
-
 Il nostro programma utilizza queste formule per calcolare i valori di S, I e R per ogni giorno i-esimo (si veda  \textbf{\textit{sir.cpp}}).
+
 \ 
 \\
-
 %All'avvio del programma, all'utente sarà chiesto di fornire tramite standard input i valori di beta, gamma e infetti iniziali - dati caratteristici della situazione da simulare. 
 La durata della simulazione (60 giorni) e il numero totale della popolazione (1000 unità) sono già definiti al compile time. Anche i parametri $\beta$ e $\gamma$ vengono definiti dal programmatore, di default abbiamo assegnato $\beta = 0.0035$ e $\gamma = 0.12$ \footnote{per questi valori abbiamo fatto rifermento a quelli citati dai professori Lamberti, Cifra e Marone del Dipartimento di Matematica dell'Università Sapienza di Roma (\url{https://www1.mat.uniroma1.it/people/pensionati/lamberti/lauree/sir.pdf})} (si veda il \textbf{\textit{main.cpp}})
-\\ 
-Con questi valori il programma riesce a calcolare i valori di S, I e R di ciascun giorno (si veda  \textbf{\textit{sir.cpp}}) e stamparli come standard output (si veda  \textbf{\textit{print.cpp}}), inoltre in \textbf{\textit{main.cpp}} viene creata una finestra con l'ausilio della libreria SFML, vengono creati tre vettori che contengono le coordinate dei valori di S, I e R in funzione dei giorni trascorsi e i punti vengono stampati in un piano cartesiano su questa finestra.
+Con questi valori il programma riesce a calcolare i valori di S, I e R di ciascun giorno (si veda  \textbf{\textit{sir.cpp}}) e stamparli come standard output (si veda  \textbf{\textit{print.cpp}}), inoltre in \textbf{\textit{main.cpp}} viene costruita una finestra con l'ausilio della libreria SFML, vengono creati tre vettori che contengono le coordinate dei valori di S, I e R in funzione dei giorni trascorsi e i punti vengono stampati in un piano cartesiano su questa finestra.
 
 
 \subsection{Modalità 2}
 Questa modalità prevede di osservare in via grafica l'andamento del contagio in una griglia bidimensionale composta da 256 celle per lato. Ogni cella rappresenta un individuo e può essere di stato S, I o R. Gli individui infetti hanno una certa probabilità di contagiare le celle vicine di stato suscettibile e rimangono infetti per un certo lasso di tempo distribuito uniformemente tra 14 e 20 giorni (si faccia riferimento a \textbf{\textit{person.hpp}}). Definito l'oggetto \verb!Person! e inizializzato come \verb!Susceptible!, in \textbf{\textit{board.hpp}} viene creata la griglia \verb!Board! come vettore di tipo  \verb!Person!. A questo punto il \textbf{\textit{main.cpp}} può, con l'aiuto di SFML, riempire una finestra con una griglia piena di celle. Visivamente (si veda  \textbf{\textit{display.hpp}}) le \verb!Person! di stato \verb!Susceptible! vengono colorate di rosso, le \verb!Person! di stato \verb!Infectious! vengono colorate di verde e quelle di stato \verb!Recovered! di blu.
-\ \\
-All'avvio del programma l'utente con il mouse dovrà premere su ogni cella che vuole considerare infetta allo stato iniziale e quindi si colorerà di verde. Raggiunto lo stato iniziale desiderato, l'utente darà inizio alla simulazione dei contagi premendo un qualsiasi tasto sulla tastiera. Il \textbf{\textit{main.cpp}} stamperà su terminale il conteggio corrente dello stato delle celle (calcolato in \textbf{\textit{count.cpp}}) aggiornandolo ad ogni ciclo e i valori di $\beta$, $\gamma$ e $R_0$ caratteristici; con questi valori un'altra finestra SFML terrà traccia dell'andamento di S(t), I(t) e R(t) e li graficherà simultaneamente (si vedano le righe 33-116 di \textbf{\textit{main.cpp}}) . Anche la \verb!Board! (e di conseguenza la schermata grafica) si aggiornerà tenendo conto dei contagi. La situazione dei contagi e l'evoluzione delle celle è definita in \textbf{\textit{evolve.cpp}}.
+
+All'avvio del programma l'utente con il mouse dovrà premere su ogni cella che vuole considerare infetta allo stato iniziale e quindi si colorerà di verde. Raggiunto lo stato iniziale desiderato, l'utente darà inizio alla simulazione dei contagi premendo un qualsiasi tasto sulla tastiera. Il \textbf{\textit{main.cpp}} stamperà su terminale il conteggio corrente dello stato delle celle (calcolato in \textbf{\textit{count.cpp}}) aggiornandolo ad ogni ciclo e i valori di $\beta$ e $\gamma$ calcolati a partire dalle formule inverse delle equazioni (1) e (3) verrà inoltre stampato il valore $R_0$ 
+\footnote{
+  Maneggiando l'equazione (2) possiamo ricavare che:
+  $$
+    \Delta I = \beta \big( S_i - \frac{\gamma}{\beta} \big) I_n
+  $$
+  $$
+    \Rightarrow \Delta I > 0 \Leftrightarrow S_0 > \frac{\gamma}{\beta}
+  $$ il che significa che l'epidemia si propaghera'. Al contrario se $S_0 < \frac{\gamma}{\beta}$
+  l'epidemia si estinguera'. Il rapporto $\frac{\beta}{\gamma}$ assume dunque un valore di soglia per l'epidemia
+  stessa. Scriviamo (tenendo presente che $S_0 = N$):
+  $$
+    R_0 = \frac{\beta}{\gamma} N 
+  $$
+}; con questi valori un'altra finestra SFML terrà traccia dell'andamento di S(t), I(t) e R(t) e li graficherà simultaneamente (si vedano le righe 33-116 di \textbf{\textit{main.cpp}}) . Anche la \verb!Board! (e di conseguenza la schermata grafica) si aggiornerà tenendo conto dei contagi. La situazione dei contagi e l'evoluzione delle celle è definita in \textbf{\textit{evolve.cpp}}.
 
 \section{Istruzioni di compilazione e esecuzione}
 
 
-Per la corretta compilazione del progetto è necessario l'utilizzo di g++ (compilatore del linguaggio C++), la libreria grafica SFML e CMake. %e librerie SFML?? <------ !!!
+Per la corretta compilazione del progetto è necessario l'utilizzo di g++ (compilatore del linguaggio C++), la libreria grafica SFML e CMake. 
 Se non si possiede CMake, è necessario installarlo:
 \begin{lstlisting}
 	sudo apt-get install g++ libsfml-dev cmake
