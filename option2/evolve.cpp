@@ -1,4 +1,5 @@
-// this function count how many rows and columns the (r, c) cell has in his neighborhood
+// this function count how many rows and columns the (r, c) cell has in his
+// neighborhood
 int neigh_count(SIR::Board const &board, int const r, int const c) {
   int result = -static_cast<int>(board(r, c).getState());
   for (int i = r - 1; i != r + 2; ++i) {
