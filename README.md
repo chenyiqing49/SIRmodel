@@ -33,7 +33,8 @@ ctest
 > ### RISULTATI
 Compilando il file ![option1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1) otteniamo il grafico degli andamenti delle funzioni nel tempo S(t) (suscettibili), I(t) (infetti) e R(t) (rimossi):
 
-![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/option1/sir.png)
+![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/tex/images/Figura_1.png)
+![opzione1](https://github.com/samuelelanzi/SIRmodel/blob/master/tex/images/Figura_2.png)
 
 Compilando il file ![option2](https://github.com/samuelelanzi/SIRmodel/blob/master/option2) otteniamo una simulazione dell'evolversi di un'epidemia secondo il modello SIR:
 
