@@ -7,9 +7,9 @@ SIR Epidemy::getInit() { return init_; }
 int Epidemy::getNday() { return n_day_; }
 
 std::vector<SIR> Epidemy::create_model(double const &beta, double const &gamma, int const &N) {
-  assert(n_day_ > 0);
-  assert(beta > 0);
-  assert(gamma > 0);
+  static_assert(n_day_ > 0, "Days are define > 0");
+  static_assert(beta > 0, "Beta is define > 0");
+  static_assert(gamma > 0, "Gamma is define > 0");
 
   std::vector<SIR> result{init_};
 
