@@ -92,7 +92,7 @@ int main() {
         s.push_back(countS);
         r.push_back(countR);
         
-        // throwgh the formulas of the SIR model we obtain
+        // through the formulas of the SIR model we obtain
         // the values of beta, gamma and R_0
         double b_num = static_cast<double>(prevS - countS);
         double b_den = static_cast<double>(countS * countI);
