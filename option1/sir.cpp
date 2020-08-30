@@ -6,7 +6,8 @@ SIR Epidemy::getInit() { return init_; }
 
 int Epidemy::getNday() { return n_day_; }
 
-std::vector<SIR> Epidemy::create_model(double const &beta, double const &gamma, int const &N) {
+std::vector<SIR> Epidemy::create_model(double const &beta, double const &gamma,
+                                       int const &N) {
   assert(n_day_ > 0);
   assert(beta > 0);
   assert(gamma > 0);
