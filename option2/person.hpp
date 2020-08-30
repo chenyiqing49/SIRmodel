@@ -29,8 +29,7 @@ public:
 
   void infect() {
     constexpr int probabilityToInfect = 100;
-    static_assert(probabilityToInfect > 0,
-                  "Probability <= 0");
+    static_assert(probabilityToInfect > 0, "Probability <= 0");
     static_assert(probabilityToInfect <= 100, "Probability > 100%");
 
     int days = generateRandom(14, 20);
